@@ -1,8 +1,8 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.string :body, null: false
-      t.integer :challenge_id
+      t.string :body
+      t.integer :hit_challenge_id
 
       t.timestamps null: false
     end

@@ -11,20 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504162614) do
+ActiveRecord::Schema.define(version: 20160504164241) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "body"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "challenges", force: :cascade do |t|
-    t.integer  "game_id",    null: false
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -37,17 +30,24 @@ ActiveRecord::Schema.define(version: 20160504162614) do
   end
 
   create_table "guesses", force: :cascade do |t|
+    t.string   "body",        null: false
     t.integer  "user_id"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
+  create_table "hit_challenges", force: :cascade do |t|
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
-    t.string   "body",         null: false
-    t.integer  "challenge_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.string   "body"
+    t.integer  "hit_challenge_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|
