@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 20160504164241) do
   end
 
   create_table "guesses", force: :cascade do |t|
-    t.string   "body",                      null: false
-    t.string   "correct",     default: "f"
+    t.string   "body",                        null: false
+    t.boolean  "correct",     default: false
     t.integer  "user_id"
     t.integer  "question_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "hit_challenges", force: :cascade do |t|
