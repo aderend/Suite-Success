@@ -1,4 +1,5 @@
 class HitChallengeController < ApplicationController
+
   def new
 
   end
