@@ -52,12 +52,13 @@ ActiveRecord::Schema.define(version: 20160504164241) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "email",      null: false
-    t.string   "company",    null: false
+    t.string   "name",                       null: false
+    t.string   "email",                      null: false
+    t.string   "company",                    null: false
     t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "admin",      default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
 end
