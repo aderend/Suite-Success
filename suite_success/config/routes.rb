@@ -4,10 +4,18 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'users#new'
+  get '/users/:id/show' => 'users#show'
   get '/login' => 'users#new'
   post '/sessions' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
   get '/games/new' => 'games#new'
+  post '/games/new' => 'games#create'
+  get '/games/:id/show' => 'games#show', as: 'games_show'
+  get '/games/:id/add_home_players' => 'home_players#new', as: 'add_home_player'
+  post '/games/:id/add_home_players' => 'home_players#create'
+  get '/games/:id/add_away_players' => 'away_players#new', as: 'add_away_player'
+  post '/games/:id/add_away_players' => 'away_players#create'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

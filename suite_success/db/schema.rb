@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20160509162242) do
   create_table "away_players", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "position",   null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160509162242) do
   create_table "home_players", force: :cascade do |t|
     t.string   "name",       null: false
     t.string   "position",   null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

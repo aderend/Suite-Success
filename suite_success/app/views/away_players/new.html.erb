@@ -1,0 +1,11 @@
+<h2>Set up Away Team</h2>
+
+<p>
+    <%= form_for @away_player do |f| %>
+    <%= f.label :name %>:
+    <%= f.text_field :name %><br />
+    <%= f.label :position %>:
+    <%= f.text_field :position %><br />
+    <%= f.submit %>
+    <% end %>
+</p>
