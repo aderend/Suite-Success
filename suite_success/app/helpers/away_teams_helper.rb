@@ -1,0 +1,2 @@
+module AwayTeamsHelper
+end
