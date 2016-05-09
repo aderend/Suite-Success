@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get '/login' => 'users#new'
   post '/sessions' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
+  get '/games/new' => 'games#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
