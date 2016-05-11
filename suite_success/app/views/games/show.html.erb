@@ -1,9 +1,9 @@
 This is the game show page.</br>
 
-<h2><%= @game.home%> vs <%= @game.away%></h2>
+<h2><%= @game.home%> vs <%=@game.away%></h2>
 
 <% @home_players.each do |p| %>
-  <%= p.position%> -
+  <%= p.position%></br>
   <%= p.name %></br>
 <%end%>
 
@@ -11,3 +11,4 @@ This is the game show page.</br>
   <%= p.position%>
   <%= p.name %>
 <%end%>
+

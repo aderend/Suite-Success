@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
   private
 
-  def  game_params
+  def game_params
     params.require(:game).permit(:home, :away, :sport)
   end
 
