@@ -12,3 +12,8 @@ This is the game show page.</br>
   <%= p.name %>
 <%end%>
 
+
+<%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
+  <%=f.submit "Create Hit Challenge" %>
+<%end%>
+
