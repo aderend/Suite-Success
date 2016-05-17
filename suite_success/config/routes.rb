@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   # get '/games/:id/show' => 'hit_challenges#new', as: 'create_hit_challenge'
   get '/hit_challenges/:id/show' => 'hit_challenges#show', as: 'show_hit_challenge'
   post '/games/:id/show' => 'hit_challenges#create', as: 'create_hit_challenge'
+  post '/hit_challenges/:id/show' => 'guesses#create', as: 'submit_hit_guess'
 
 
   # Example of regular route:

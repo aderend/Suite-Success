@@ -1,4 +1,4 @@
 class Guess < ActiveRecord::Base
-  belongs_to :challenge
+  belongs_to :hit_challenge
   belongs_to :user
 end

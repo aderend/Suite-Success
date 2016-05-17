@@ -1,4 +1,17 @@
-<% @home_players.each do |p| %>
-  <%= p.name %>
-  <%= p.position%>
+Home Team
+<%=form_tag submit_hit_guess_path do %>
+<p>
+C:
+<%= select_tag 'guess[player_name]', options_for_select(@c_home_players.map {|p| p.name}) %>
+</p>
+
+OF:
+<%= select_tag 'guess[player_name]', options_for_select(@of_home_players.map {|p| p.name}) %>
+</p>
+
+<%=submit_tag "Confirm" %>
 <%end%>
+
+
+
+
