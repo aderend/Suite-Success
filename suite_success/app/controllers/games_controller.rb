@@ -7,7 +7,7 @@ class GamesController < ApplicationController
   def create
     game = Game.new(game_params)
     if game.save
-      redirect_to games_new_path(game)
+      redirect_to add_home_player_path(game)
     else
       redirect_to root_path
     end
@@ -21,7 +21,7 @@ class GamesController < ApplicationController
 
   private
 
-  def  game_params
+  def game_params
     params.require(:game).permit(:home, :away, :sport)
   end
 
