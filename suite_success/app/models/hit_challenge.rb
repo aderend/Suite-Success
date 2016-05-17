@@ -4,3 +4,11 @@ class HitChallenge < ActiveRecord::Base
   has_many :answers
   has_many :users
 end
+
+def away_list_players(pos)
+  AwayPlayers.where(position: pos)
+end
+
+def home_list_players(pos)
+  HomePlayers.where(position: pos)
+end

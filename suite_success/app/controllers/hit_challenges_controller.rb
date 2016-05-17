@@ -13,6 +13,7 @@ class HitChallengesController < ApplicationController
   def show
     hit_challenge = HitChallenge.find(params[:id])
     @home_players = hit_challenge.game.home_players
+
   end
 
 end
