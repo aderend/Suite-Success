@@ -3,9 +3,6 @@ class HitGuessesController < ApplicationController
   def create
     hit_challenge = HitChallenge.find(params[:id])
     game = hit_challenge.game_id
-    p "********************"
-    p params
-    p "********************"
     hit_guess = hit_challenge.hit_guesses.new(hit_guess_params)
     if hit_guess.save
       redirect_to games_show_path(game)
