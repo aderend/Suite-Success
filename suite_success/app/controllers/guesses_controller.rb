@@ -1,5 +1,3 @@
 class GuessesController < ApplicationController
 
-
-
 end

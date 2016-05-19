@@ -12,6 +12,8 @@ class CreateHitGuesses < ActiveRecord::Migration
       t.string :pos_dh
       t.string :total_hits
 
+      t.integer :hit_challenge_id
+
       t.timestamps null: false
     end
   end

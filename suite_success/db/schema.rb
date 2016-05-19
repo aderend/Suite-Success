@@ -64,8 +64,9 @@ ActiveRecord::Schema.define(version: 20160519164624) do
     t.string   "pos_of3"
     t.string   "pos_dh"
     t.string   "total_hits"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "hit_challenge_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "home_players", force: :cascade do |t|
