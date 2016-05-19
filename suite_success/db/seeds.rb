@@ -10,7 +10,8 @@ user1 = User.create(name: "Pat Luckett",company: "Novo Consulting", email: "pat@
 
 game1 = Game.create(home: "Yankees", away: "RedSox")
 challenge1 = game1.hit_challenges.create
-question1 = challenge1.questions.create(body: "C")
-guess1 = user1.guesses.create(body: "0.280", question_id: 1)
-answer1 = question1.answers.create(body: "0.150")
+player1 = game1.home_players.create(name: "Michale Jordan", position: "C")
+player2 = game1.home_players.create(name: "Allen Iverson", position: "OF")
+player2 = game1.home_players.create(name: "Lewis Hamilton", position: "C")
+
 

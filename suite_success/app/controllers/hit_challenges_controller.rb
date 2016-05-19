@@ -13,7 +13,13 @@ class HitChallengesController < ApplicationController
   def show
     hit_challenge = HitChallenge.find(params[:id])
     @home_players = hit_challenge.game.home_players
-
+    @c_home_players = hit_challenge.home_list_players("C")
+    @b1_home_players = hit_challenge.home_list_players("1B")
+    @b2_home_players = hit_challenge.home_list_players("2B")
+    @b3_home_players = hit_challenge.home_list_players("3B")
+    @ss_home_players = hit_challenge.home_list_players("SS")
+    @of_home_players = hit_challenge.home_list_players("OF")
+    @DHP_home_players = hit_challenge.home_list_players("DH")
   end
 
 end
