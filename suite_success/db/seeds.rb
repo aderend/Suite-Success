@@ -6,7 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create(name: "Pat Luckett",company: "Novo Consulting", email: "pat@gmail.com")
+user1 = User.create(name: "Pat Luckett", company: "Novo Consulting", email: "pat@gmail.com", admin: true)
+user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.dogrusoy@gmail.com")
 
 game1 = Game.create(home: "Yankees", away: "RedSox")
 challenge1 = game1.hit_challenges.create

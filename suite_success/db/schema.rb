@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20160519164624) do
 
   create_table "hit_challenges", force: :cascade do |t|
     t.integer  "game_id"
+    t.integer  "inning"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
