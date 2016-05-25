@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin
-    current_user.admin
+     return false unless current_user.admin
   end
 
 

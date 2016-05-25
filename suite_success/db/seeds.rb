@@ -9,7 +9,7 @@
 user1 = User.create(name: "Pat Luckett", company: "Novo Consulting", email: "pat@gmail.com", admin: true)
 user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.dogrusoy@gmail.com")
 
-game1 = Game.create(home: "Yankees", away: "RedSox")
+game1 = Game.create(title: "NYY vs RED SOX", home: "Yankees", away: "RedSox")
 challenge1 = game1.hit_challenges.create
 player1 = game1.home_players.create(name: "Michale Jordan", position: "C")
 player2 = game1.home_players.create(name: "Allen Iverson", position: "OF")

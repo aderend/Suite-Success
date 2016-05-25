@@ -1,19 +1,20 @@
-This is the game show page.</br>
-
 <h2><%= @game.home%> vs <%=@game.away%></h2>
 
-<% @home_players.each do |p| %>
-  <%= p.position%></br>
-  <%= p.name %></br>
-<%end%>
-
+<h4>Home Players:</h4>
+  <% @home_players.each do |p| %>
+    <%= p.position%> -
+    <%= p.name %></br>
+  <%end%>
+<h4>Away Players:</h4>
 <% @away_players.each do |p| %>
   <%= p.position%>
   <%= p.name %>
 <%end%>
 
-
-<%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
-  <%=f.submit "Create Hit Challenge" %>
+<% if is_admin %>
+  <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
+    <%= f.check_box :active %>
+    <%=f.submit "Create Hit Challenge" %>
+  <%end%>
 <%end%>
 
