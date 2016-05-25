@@ -14,6 +14,7 @@ class GamesController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless current_user
     @game = Game.find(params[:id])
     @home_players = @game.home_players
     @away_players = @game.away_players
