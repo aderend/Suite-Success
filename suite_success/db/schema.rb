@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20160519164624) do
   end
 
   create_table "away_players", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "position",   null: false
-    t.integer  "game_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "position",    null: false
+    t.integer  "batting_avg"
+    t.integer  "game_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "games", force: :cascade do |t|
@@ -65,6 +66,15 @@ ActiveRecord::Schema.define(version: 20160519164624) do
     t.string   "pos_of2"
     t.string   "pos_of3"
     t.string   "pos_dh"
+    t.string   "away_pos_c"
+    t.string   "away_pos_1b"
+    t.string   "away_pos_2b"
+    t.string   "away_pos_3b"
+    t.string   "away_pos_ss"
+    t.string   "away_pos_of1"
+    t.string   "away_pos_of2"
+    t.string   "away_pos_of3"
+    t.string   "away_pos_dh"
     t.string   "total_hits"
     t.integer  "hit_challenge_id"
     t.datetime "created_at",       null: false
@@ -72,11 +82,12 @@ ActiveRecord::Schema.define(version: 20160519164624) do
   end
 
   create_table "home_players", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "position",   null: false
-    t.integer  "game_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "name",        null: false
+    t.string   "position",    null: false
+    t.integer  "batting_avg"
+    t.integer  "game_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "questions", force: :cascade do |t|
