@@ -20,6 +20,15 @@ class HitChallengesController < ApplicationController
     @ss_home_players = hit_challenge.home_list_players("SS")
     @of_home_players = hit_challenge.home_list_players("OF")
     @DHP_home_players = hit_challenge.home_list_players("DH")
+    @c_away_players = hit_challenge.away_list_players("C")
+    @b1_away_players = hit_challenge.away_list_players("1B")
+    @b2_away_players = hit_challenge.away_list_players("2B")
+    @b3_away_players = hit_challenge.away_list_players("3B")
+    @ss_away_players = hit_challenge.away_list_players("SS")
+    @of_away_players = hit_challenge.away_list_players("OF")
+    @DHP_away_players = hit_challenge.away_list_players("DH")
+
+
   end
 
 end
