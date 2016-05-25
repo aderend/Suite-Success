@@ -4,6 +4,7 @@ class HitGuessesController < ApplicationController
     hit_challenge = HitChallenge.find(params[:id])
     game = hit_challenge.game_id
     hit_guess = hit_challenge.hit_guesses.new(hit_guess_params)
+    hit_guess.user_id = current_user.id
     if hit_guess.save
       redirect_to games_show_path(game)
     else
