@@ -30,12 +30,13 @@ ActiveRecord::Schema.define(version: 20160519164624) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.string   "home",                       null: false
-    t.string   "away",                       null: false
-    t.boolean  "over",       default: false
+    t.string   "title"
+    t.string   "home",                      null: false
+    t.string   "away",                      null: false
+    t.boolean  "active",     default: true
     t.string   "sport"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "guesses", force: :cascade do |t|
