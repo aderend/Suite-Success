@@ -19,7 +19,7 @@ class CreateHitGuesses < ActiveRecord::Migration
       t.string :away_pos_of2
       t.string :away_pos_of3
       t.string :away_pos_dh
-      t.string :total_hits
+      t.integer :total_hits
       t.integer :hit_challenge_id
 
       t.timestamps null: false
