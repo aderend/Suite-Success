@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160519164624) do
     t.string   "away_pos_dh"
     t.integer  "total_hits"
     t.integer  "hit_challenge_id"
+    t.integer  "user_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end

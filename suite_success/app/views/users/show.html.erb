@@ -1,3 +1,10 @@
 Today's Game: <%= link_to @active_game.title, games_show_path(@active_game) %></br>
-Today's Hit Challenge <%= link_to @active_hit_challenge.game.title, show_hit_challenge_path(@active_hit_challenge) %>
+Today's Hit Challenge <%= link_to @active_hit_challenge.game.title, show_hit_challenge_path(@active_hit_challenge) %></br>
+
+<% if is_admin %>
+  Today's Hit Challenge Contenders:
+  <%@active_hit_challenge.hit_guesses.each do |g| %>
+    <p><%= link_to g.user.name, user_path(g.user)  %></p>
+  <%end%>
+<%end%>
 
