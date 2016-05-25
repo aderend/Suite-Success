@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   post '/hit_challenges/:id/show' => 'hit_guesses#create', as: 'submit_hit_guess'
 
 
+
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
