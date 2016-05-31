@@ -11,8 +11,8 @@ user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.do
 
 game1 = Game.create(title: "NYY vs RED SOX", home: "Yankees", away: "RedSox")
 challenge1 = game1.hit_challenges.create
-player1 = game1.home_players.create(name: "Michael Jordan", position: "C")
-player2 = game1.home_players.create(name: "Allen Iverson", position: "OF")
-player2 = game1.home_players.create(name: "Lewis Hamilton", position: "C")
+player1 = game1.home_players.create(name: "Michael Jordan", position: "C", batting_avg: 0.105)
+player2 = game1.home_players.create(name: "Allen Iverson", position: "OF", batting_avg: 0.205)
+player2 = game1.home_players.create(name: "Lewis Hamilton", position: "C", batting_avg: 0.405)
 
 
