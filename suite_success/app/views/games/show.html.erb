@@ -3,7 +3,7 @@
 <h4>Home Players:</h4>
   <% @home_players.each do |p| %>
     <%= p.position%> -
-    <%= p.name %></br>
+    <%= p.name%>: <%= p.at_bat%></br>
   <%end%>
 <h4>Away Players:</h4>
 <% @away_players.each do |p| %>
