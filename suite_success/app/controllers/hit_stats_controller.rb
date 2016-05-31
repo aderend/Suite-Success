@@ -1,0 +1,2 @@
+class HitStatsController < ApplicationController
+end
