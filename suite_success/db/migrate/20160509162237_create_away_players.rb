@@ -3,7 +3,8 @@ class CreateAwayPlayers < ActiveRecord::Migration
     create_table :away_players do |t|
       t.string :name, null: false
       t.string :position, null: false
-      t.integer :batting_avg
+      t.string :batting_avg, null: false
+      t.integer :at_bat, default: 0
       t.integer :game_id, null: false
 
       t.timestamps null: false
