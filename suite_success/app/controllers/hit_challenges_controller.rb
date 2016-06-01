@@ -11,6 +11,7 @@ class HitChallengesController < ApplicationController
   end
 
   def show
+    redirect_to root_path unless current_user
     hit_challenge = HitChallenge.find(params[:id])
     @home_players = hit_challenge.game.home_players
     @c_home_players = hit_challenge.home_list_players("C")

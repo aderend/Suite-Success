@@ -1,19 +1,28 @@
-<h2><%= @game.home%> vs <%=@game.away%></h2>
+<h2><%=@game.home%> vs <%=@game.away%></h2>
 
 <h4>Home Players:</h4>
-  <% @home_players.each do |p| %>
-    <%= p.position%> -
-    <%= p.name %></br>
+<% @home_players.each do |p| %>
+  <%= p.position%> -
+  <%= link_to p.name%>: <%= p.at_bat%>
+  <%= form_for p, url: increment_home_bat_path do |f| %>
+    <%= f.hidden_field :player_id, value: p.id %>
+    <%=f.submit "+" %>
   <%end%>
+    </br>
+<%end%>
 <h4>Away Players:</h4>
 <% @away_players.each do |p| %>
   <%= p.position%>
-  <%= p.name %>
+  <%= p.name%>: <%= p.at_bat%>
+  <%= form_for p, url: increment_home_bat_path do |f| %>
+    <%= f.hidden_field :player_id, value: p.id %>
+    <%=f.submit "+" %>
+  <%end%>
+  </br>
 <%end%>
 
 <% if is_admin %>
   <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
-    <%= f.check_box :active %>
     <%=f.submit "Create Hit Challenge" %>
   <%end%>
 <%end%>
