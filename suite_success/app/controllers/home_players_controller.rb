@@ -15,10 +15,17 @@ class HomePlayersController < ApplicationController
     end
   end
 
+  def increment_bat
+    game = Game.find(params[:id])
+    player = HomePlayer.find_by(id: player_params[:player_id])
+    player.increment_bat
+    redirect_to games_show_path(game)
+  end
+
   private
 
   def player_params
-    params.require(:home_player).permit(:name, :position)
+    params.require(:home_player).permit(:name, :position, :player_id)
   end
 
 end

@@ -13,6 +13,13 @@ class AwayPlayersController < ApplicationController
     end
   end
 
+  def increment_bat
+    game = Game.find(params[:id])
+    player = AwayPlayer.find_by(id: player_params[:player_id])
+    player.increment_bat
+    redirect_to games_show_path(game)
+  end
+
   def player_params
     params.require(:away_player).permit(:name, :position)
   end
