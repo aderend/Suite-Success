@@ -1,6 +1,7 @@
 class HomePlayersController < ApplicationController
 
   def new
+    redirect_to root_path unless is_admin
     @home_player = HomePlayer.new
   end
 
