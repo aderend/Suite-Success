@@ -19,9 +19,10 @@ Rails.application.routes.draw do
   post '/games/:id/add_away_players' => 'away_players#create'
   patch '/away_players/:id/increment' => 'away_players#increment_bat', as: 'increment_away_bat'
   patch '/away_players/:id/deccrement' => 'away_players#decrement_bat', as: 'decrement_away_bat'
-  get '/hit_challenges/:id/show' => 'hit_challenges#show', as: 'show_hit_challenge'
+  get '/hit_challenges/:id/play' => 'hit_challenges#play', as: 'play_hit_challenge'
   post '/games/:id/show' => 'hit_challenges#create', as: 'create_hit_challenge'
-  post '/hit_challenges/:id/show' => 'hit_guesses#create', as: 'submit_hit_guess'
+  post '/hit_challenges/:id/play' => 'hit_guesses#create', as: 'submit_hit_guess'
+  get '/hit_challenges/:id/status' => 'hit_challenges#status', as: 'hit_status'
 
 
 
