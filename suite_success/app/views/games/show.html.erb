@@ -4,9 +4,15 @@
 <% @home_players.each do |p| %>
   <%= p.position%> -
   <%= link_to p.name%>: <%= p.at_bat%>
-  <%= form_for p, url: increment_home_bat_path do |f| %>
-    <%= f.hidden_field :player_id, value: p.id %>
-    <%=f.submit "+" %>
+  <% if is_admin %>
+    <%= form_for p, url: increment_home_bat_path do |f| %>
+      <%= f.hidden_field :player_id, value: p.id %>
+      <%=f.submit "+" %>
+    <%end%>
+    <%= form_for p, url: decrement_home_bat_path do |f| %>
+      <%= f.hidden_field :player_id, value: p.id %>
+      <%=f.submit "-" %>
+    <%end%>
   <%end%>
     </br>
 <%end%>
@@ -17,6 +23,10 @@
   <%= form_for p, url: increment_home_bat_path do |f| %>
     <%= f.hidden_field :player_id, value: p.id %>
     <%=f.submit "+" %>
+  <%end%>
+  <%= form_for p, url: decrement_home_bat_path do |f| %>
+    <%= f.hidden_field :player_id, value: p.id %>
+    <%=f.submit "-" %>
   <%end%>
   </br>
 <%end%>
