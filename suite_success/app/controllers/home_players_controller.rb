@@ -22,6 +22,13 @@ class HomePlayersController < ApplicationController
     redirect_to games_show_path(game)
   end
 
+  def decrement_bat
+    game = Game.find(params[:id])
+    player = HomePlayer.find_by(id: player_params[:player_id])
+    player.decrement_bat
+    redirect_to games_show_path(game)
+  end
+
   private
 
   def player_params
