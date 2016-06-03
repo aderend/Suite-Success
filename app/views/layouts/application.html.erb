@@ -8,7 +8,7 @@
 </head>
 <body>
   <% if current_user %>
-    <%= render "shared/header" if is_admin %>
+    <%= render "shared/admin_header" if is_admin %>
     <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
   <%end%>
 <%= yield %>

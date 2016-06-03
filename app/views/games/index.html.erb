@@ -1,0 +1,6 @@
+<% @games.each do |g| %>
+  <li>Game:<%= link_to "#{g.title}", games_show_path(g)%></li>
+  <li>Hit Challenge: <%= link_to "Status", hit_status_path(g.hit_challenges.last)%> <%= link_to "Play", play_hit_challenge_path(g.hit_challenges.last)%></li>
+
+
+<%end%>

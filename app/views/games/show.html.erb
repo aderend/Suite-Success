@@ -1,9 +1,14 @@
 <h2><%=@game.home%> vs <%=@game.away%></h2>
 
+<% if is_admin %>
+  <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
+  <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
+<%end%>
+
 <h4>Home Players:</h4>
 <% @home_players.each do |p| %>
   <%= p.position%> -
-  <%= link_to p.name%>: <%= p.at_bat%>
+  <%= p.name%>: <%= p.at_bat%>
   <% if is_admin %>
     <%= form_for p, url: increment_home_bat_path do |f| %>
       <%= f.hidden_field :player_id, value: p.id %>
@@ -13,6 +18,13 @@
       <%= f.hidden_field :player_id, value: p.id %>
       <%=f.submit "-" %>
     <%end%>
+    <b>
+      <%= form_for p, url: delete_home_player_path(p), method: :delete do |f| %>
+        <%= f.hidden_field :player_id, value: p.id %>
+
+        <%= f.submit "Delete Player" %>
+      <%end%>
+     </b>
   <%end%>
     </br>
 <%end%>
@@ -20,13 +32,20 @@
 <% @away_players.each do |p| %>
   <%= p.position%>
   <%= p.name%>: <%= p.at_bat%>
-  <%= form_for p, url: increment_home_bat_path do |f| %>
-    <%= f.hidden_field :player_id, value: p.id %>
-    <%=f.submit "+" %>
-  <%end%>
-  <%= form_for p, url: decrement_home_bat_path do |f| %>
-    <%= f.hidden_field :player_id, value: p.id %>
-    <%=f.submit "-" %>
+  <% if is_admin %>
+    <%= form_for p, url: increment_home_bat_path do |f| %>
+      <%= f.hidden_field :player_id, value: p.id %>
+      <%=f.submit "+" %>
+    <%end%>
+    <%= form_for p, url: decrement_home_bat_path do |f| %>
+      <%= f.hidden_field :player_id, value: p.id %>
+      <%=f.submit "-" %>
+    <%end%>
+    <%= form_for p, url: delete_away_player_path(p), method: :delete do |f| %>
+        <%= f.hidden_field :player_id, value: p.id %>
+
+        <%= f.submit "Delete Player" %>
+      <%end%>
   <%end%>
   </br>
 <%end%>
