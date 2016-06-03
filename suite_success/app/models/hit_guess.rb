@@ -7,16 +7,19 @@ class HitGuess < ActiveRecord::Base
   def list_players
     players = []
     HitGuess::HIT_GUESS_POSITIONS.each do |pos|
-      players << self[pos].gsub(/[^a-zA-Z]/, '').downcase unless self[pos] == nil
+      players << self[pos].gsub(/:.*/, '') unless self[pos] == nil
     end
     players.delete_if {|p| p == "" }
     players
   end
 
   def calculate_points
-    duplicate_players = self.hit_challenge.list_player_names + list_players
-
-
+    players = list_players
+    points = 0
+    players.each do |p|
+      points += HomePlayer.find_by(name: p).at_bat
+    end
+    points
   end
 
 
