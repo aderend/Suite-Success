@@ -10,7 +10,7 @@ class HitChallengesController < ApplicationController
     end
   end
 
-  def show
+  def play
     redirect_to root_path unless current_user
     hit_challenge = HitChallenge.find(params[:id])
     @home_players = hit_challenge.game.home_players
@@ -28,8 +28,11 @@ class HitChallengesController < ApplicationController
     @ss_away_players = hit_challenge.away_list_players("SS")
     @of_away_players = hit_challenge.away_list_players("OF")
     @DHP_away_players = hit_challenge.away_list_players("DH")
+  end
 
-
+  def status
+    @hit_challenge = HitChallenge.find(params[:id])
+    @guesses = @hit_challenge.hit_guesses
   end
 
 end

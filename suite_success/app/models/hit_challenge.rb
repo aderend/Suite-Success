@@ -12,4 +12,17 @@ class HitChallenge < ActiveRecord::Base
     game.home_players.where(position: pos)
   end
 
+  def calculate_bats
+    home_players = self.game.home_players
+    away_players = self.game.away_players
+    total_at_bat = 0
+    away_players.each do |p|
+      total_at_bat += p.at_bat
+    end
+    home_players.each do |p|
+      total_at_bat += p.at_bat
+    end
+    total_at_bat
+  end
+
 end
