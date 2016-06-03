@@ -20,6 +20,10 @@ class GamesController < ApplicationController
     @away_players = @game.away_players
   end
 
+  def index
+    @games = Game.all
+  end
+
   private
 
   def game_params
