@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
     @active_game = Game.find_by(active: true)
     @active_hit_challenge = HitChallenge.find_by(over: false)
     @old_games = Game.all
