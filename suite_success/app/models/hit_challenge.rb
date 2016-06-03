@@ -25,17 +25,4 @@ class HitChallenge < ActiveRecord::Base
     total_at_bat
   end
 
-  def list_player_names
-    game_players = []
-    self.game.home_players.each do |p|
-      game_players << p.name.downcase.delete(" ")
-    end
-    self.game.away_players.each do |p|
-      game_players << p.name.downcase.delete(" ")
-    end
-    game_players
-  end
-
-
-
 end
