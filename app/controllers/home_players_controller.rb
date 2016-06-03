@@ -29,10 +29,17 @@ class HomePlayersController < ApplicationController
     redirect_to games_show_path(game)
   end
 
+   def destroy
+    player = HomePlayer.find(params[:id])
+    game = player.game
+    player.destroy
+    redirect_to games_show_path(game)
+  end
+
   private
 
   def player_params
-    params.require(:home_player).permit(:name, :position, :player_id)
+    params.require(:home_player).permit(:name, :position, :player_id, :batting_avg)
   end
 
 end

@@ -5,7 +5,8 @@ class AwayPlayersController < ApplicationController
   end
 
   def create
-    away_player = AwayPlayer.new(player_params)
+    game = Game.find(params[:id])
+    away_player = AwayPlayer.new(player_params.merge(game_id: game.id))
     if away_player.save
       redirect_to games_show_path
     else
@@ -27,8 +28,17 @@ class AwayPlayersController < ApplicationController
     redirect_to games_show_path(game)
   end
 
+  def destroy
+    player = AwayPlayer.find(params[:id])
+    game = player.game
+    player.destroy
+    redirect_to redirect_to games_show_path(game)
+  end
+
+  private
+
   def player_params
-    params.require(:away_player).permit(:name, :position)
+    params.require(:away_player).permit(:name, :position, :batting_avg, :player_id)
   end
 
 end
