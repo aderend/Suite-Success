@@ -32,7 +32,7 @@ class AwayPlayersController < ApplicationController
     player = AwayPlayer.find(params[:id])
     game = player.game
     player.destroy
-    redirect_to redirect_to games_show_path(game)
+    redirect_to games_show_path(game)
   end
 
   private
