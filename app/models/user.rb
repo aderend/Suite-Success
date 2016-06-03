@@ -3,6 +3,6 @@ class User < ActiveRecord::Base
   has_one :hit_guess
   belongs_to :hit_challenge
 
-  validates :name, :email, :title, :company, presence: true
+  validates_presence_of :email, :name, :company, :title
 
 end
