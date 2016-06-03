@@ -1,0 +1,6 @@
+<h3>Hit Challenge: <%=@hit_challenge.game.title%></h3>
+
+<h5>Players</h5>
+<%@guesses.each do |g| %>
+  <li><%=g.user.name%>: <%=g.calculate_points%></li>
+<%end%>
