@@ -7,8 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if session[:user_id] != nil %>
-    <li><%= render "shared/header" if is_admin %></li>
+  <% if current_user %>
+    <%= render "shared/header" if is_admin %>
     <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
   <%end%>
 <%= yield %>
