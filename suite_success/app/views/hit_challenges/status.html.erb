@@ -2,8 +2,5 @@
 
 <h5>Players</h5>
 <%@guesses.each do |g| %>
-  <li><%=g.user.name%></li>
+  <li><%=g.user.name%>: <%=g.calculate_points%></li>
 <%end%>
-
-<% if is_admin %>
-  <=form
