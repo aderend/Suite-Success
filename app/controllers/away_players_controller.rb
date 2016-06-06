@@ -1,6 +1,7 @@
 class AwayPlayersController < ApplicationController
 
   def new
+    redirect_to root_path unless is_admin
     @away_player = AwayPlayer.new
   end
 

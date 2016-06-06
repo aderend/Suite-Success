@@ -1,6 +1,7 @@
 class HitResultsController < ApplicationController
 
   def new
+    redirect_to root_path unless is_admin
     @result = HitResult.new
   end
 
