@@ -9,7 +9,7 @@ class AwayPlayersController < ApplicationController
     game = Game.find(params[:id])
     away_player = AwayPlayer.new(player_params.merge(game_id: game.id))
     if away_player.save
-      redirect_to games_show_path
+      redirect_to add_away_player_path(game)
     else
       render add_away_player
     end

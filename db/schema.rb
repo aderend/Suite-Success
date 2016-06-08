@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20160602163711) do
 
   create_table "hit_challenges", force: :cascade do |t|
     t.integer  "game_id"
+    t.integer  "suite_num",                  null: false
     t.integer  "inning"
     t.boolean  "over",       default: false
     t.datetime "created_at",                 null: false
@@ -67,18 +68,18 @@ ActiveRecord::Schema.define(version: 20160602163711) do
     t.string   "pos_2b"
     t.string   "pos_3b"
     t.string   "pos_ss"
-    t.string   "pos_of1"
-    t.string   "pos_of2"
-    t.string   "pos_of3"
+    t.string   "pos_lf"
+    t.string   "pos_rf"
+    t.string   "pos_cf"
     t.string   "pos_dh"
     t.string   "away_pos_c"
     t.string   "away_pos_1b"
     t.string   "away_pos_2b"
     t.string   "away_pos_3b"
     t.string   "away_pos_ss"
-    t.string   "away_pos_of1"
-    t.string   "away_pos_of2"
-    t.string   "away_pos_of3"
+    t.string   "away_pos_lf"
+    t.string   "away_pos_rf"
+    t.string   "away_pos_cf"
     t.string   "away_pos_dh"
     t.integer  "total_hits"
     t.integer  "hit_challenge_id"

@@ -14,7 +14,9 @@
 <br /> OR LOGIN <br />
 
 <%= form_for :session, url: sessions_path do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %>
+  <li><%= f.label :email %>
+  <%= f.text_field :email %></li>
+  <li><%= f.label 'Suite Number' %>
+  <%= f.text_field :suite_num %></li>
   <%= f.submit "Log In" %>
 <% end %>
