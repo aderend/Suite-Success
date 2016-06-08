@@ -16,4 +16,8 @@ class Game < ActiveRecord::Base
     total_at_bat
   end
 
+  def has_hit_challenge
+    (self.hit_challenges.count > 0) ? true : false
+  end
+
 end
