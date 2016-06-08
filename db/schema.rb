@@ -128,6 +128,7 @@ ActiveRecord::Schema.define(version: 20160602163711) do
     t.string   "email",                      null: false
     t.string   "company",                    null: false
     t.string   "title"
+    t.integer  "suite_num",                  null: false
     t.boolean  "admin",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
