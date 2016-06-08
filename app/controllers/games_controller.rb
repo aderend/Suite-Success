@@ -16,8 +16,9 @@ class GamesController < ApplicationController
   def show
     redirect_to root_path unless current_user
     @game = Game.find(params[:id])
-    @home_players = @game.home_players
-    @away_players = @game.away_players
+    @hit_challenges = @game.hit_challenges
+    @home_players = @game.home_players.order(position: :asc)
+    @away_players = @game.away_players.order(position: :asc)
   end
 
   def index
