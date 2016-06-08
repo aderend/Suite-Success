@@ -17,7 +17,11 @@ class HitGuess < ActiveRecord::Base
     players = list_players
     points = 0
     players.each do |p|
-      points += HomePlayer.find_by(name: p).at_bat
+      if HomePlayer.find_by(name: p) == nil
+        points += AwayPlayer.find_by(name: p).at_bat
+      else
+        points += HomePlayer.find_by(name: p).at_bat
+      end
     end
     points
   end
