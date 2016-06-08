@@ -15,7 +15,7 @@ class HitGuessesController < ApplicationController
   private
 
   def hit_guess_params
-    params.require(:hit_guess).permit(:pos_c, :away_pos_c, :pos_1b, :away_pos_1b, :pos_2b, :away_pos_2b, :pos_3b, :away_pos_3b :pos_ss, :away_pos_ss, :pos_of1, :away_pos_of1, :pos_of2, :away_pos_of2, :pos_of3, :away_pos_of3, :pos_dh, :away_pos_dh, :total_hits)
+    params.require(:hit_guess).permit(:pos_c, :away_pos_c, :pos_1b, :away_pos_1b, :pos_2b, :away_pos_2b, :pos_3b, :away_pos_3b :pos_ss, :away_pos_ss, :pos_rf, :away_pos_rf, :pos_lf, :away_pos_lf, :pos_cf, :away_pos_cf, :pos_dh, :away_pos_dh, :total_hits)
   end
 
 end
