@@ -37,7 +37,7 @@ class HitChallengesController < ApplicationController
 
   def status
     @hit_challenge = HitChallenge.find(params[:id])
-    @guesses = @hit_challenge.hit_guesses.sort()
+    @guesses = @hit_challenge.hit_guesses
   end
 
 end
