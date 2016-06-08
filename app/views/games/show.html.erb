@@ -1,10 +1,22 @@
 <h2><%=@game.home%> vs <%=@game.away%></h2>
 
-<% if is_admin %>
-  <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
-  <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
+<%if is_admin%>
+  <%if !!@hit_challenges%>
+    <h4>Hit Challenges: </h4>
+    <%if @hit_challenges.count > 1%>
+      <% @hit_challenges.each do |h| %>
+        <li><%= link_to "Suite: #{h.suite_num}", hit_status_path(h) %></li>
+      <%end%>
+    <%else%>
+      <%= link_to "Suite: #{@hit_challenges.first.suite_num}", hit_status_path(@hit_challenges.first) %>
+    <%end%>
+  <%end%>
+  <p>
+    <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
+    <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
+  </p>
 <%end%>
-
+<h5> Total Hits: <%=@game.total_hits%>
 <h4>Home Players:</h4>
 <% @home_players.each do |p| %>
   <%= p.position%> -
@@ -52,6 +64,8 @@
 
 <% if is_admin %>
   <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
+    <%= f.label 'Suite Number:' %>
+    <%= f.text_field :suite_num %>
     <%=f.submit "Create Hit Challenge" %>
   <%end%>
 <%end%>

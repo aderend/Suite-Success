@@ -28,19 +28,19 @@ Home Team Vs Away Team
   <%= f.select :away_pos_ss, options_for_select(@ss_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_of1, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_lf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   OR
-  <%= f.select :away_pos_of1, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :away_pos_lf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_of2, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_rf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   OR
-  <%= f.select :away_pos_of2, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :away_pos_rf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_of3, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_cf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   OR
-  <%= f.select :away_pos_of3, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :away_pos_cf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   DH/P:
   <%= f.select :pos_dh, options_for_select(@DHP_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
