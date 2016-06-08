@@ -2,6 +2,7 @@ class HomePlayersController < ApplicationController
 
   def new
     redirect_to root_path unless is_admin
+    @game = Game.find(params[:id])
     @home_player = HomePlayer.new
   end
 
