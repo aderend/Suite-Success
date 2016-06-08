@@ -2,6 +2,7 @@ class CreateHitChallenges < ActiveRecord::Migration
   def change
     create_table :hit_challenges do |t|
       t.integer :game_id
+      t.integer :suite_num, null: false
       t.integer :inning
       t.boolean :over, default: false
 
