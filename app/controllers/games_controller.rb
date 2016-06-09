@@ -13,6 +13,20 @@ class GamesController < ApplicationController
     end
   end
 
+  def edit
+    game = Game.find(params[:id])
+  end
+
+  def update
+    game = Game.find(params[:id])
+    redirect_to games_show_path(game) unless is_admin
+    if game.update_attributes(game_params)
+      redirect_to games_show_path(game)
+    else
+      redirect_to games_edit_path(game)
+    end
+  end
+
   def show
     redirect_to root_path unless current_user
     @game = Game.find(params[:id])
