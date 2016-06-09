@@ -2,5 +2,5 @@
 
 <h5>Players</h5>
 <%@guesses.each do |g| %>
-  <li><%=g.user.name%>: <%=g.calculate_points%></li>
+  <li><%=g.user.name%>- Points: <%=g.calculate_points%>, Total Hits:<%=g.total_hits%></li>
 <%end%>
