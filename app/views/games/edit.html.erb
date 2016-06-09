@@ -1,0 +1,11 @@
+Edit The Game:
+
+<%= form_for :game, method: "PATCH" do |f| %>
+  <%= f.label :title %>:
+  <%= f.text_field :title %><br />
+  <%= f.label :home %>:
+  <%= f.text_field :home %><br />
+  <%= f.label :away %>:
+  <%= f.text_field :away %><br />
+  <%= f.submit %>
+<% end %>

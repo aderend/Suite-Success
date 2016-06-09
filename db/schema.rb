@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160602163711) do
+ActiveRecord::Schema.define(version: 20160609163420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.string   "body"
+    t.integer  "choice"
     t.integer  "question_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -41,16 +41,6 @@ ActiveRecord::Schema.define(version: 20160602163711) do
     t.string   "sport"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
-  end
-
-  create_table "guesses", force: :cascade do |t|
-    t.string   "player_name"
-    t.boolean  "correct",          default: false
-    t.integer  "user_id"
-    t.integer  "question_id"
-    t.integer  "hit_challenge_id"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
   end
 
   create_table "hit_challenges", force: :cascade do |t|
@@ -88,24 +78,6 @@ ActiveRecord::Schema.define(version: 20160602163711) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "hit_results", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "hit_stats", force: :cascade do |t|
-    t.string   "c_max_bat",  null: false
-    t.string   "b1_max_bat", null: false
-    t.string   "b2_max_bat", null: false
-    t.string   "b3_max_bat", null: false
-    t.string   "ss_max_bat", null: false
-    t.string   "of_max_bat", null: false
-    t.string   "dh_max_bat", null: false
-    t.string   "total_hits", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "home_players", force: :cascade do |t|
     t.string   "name",                    null: false
     t.string   "position",                null: false
@@ -116,11 +88,17 @@ ActiveRecord::Schema.define(version: 20160602163711) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "prop_bets", force: :cascade do |t|
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string   "body"
-    t.integer  "hit_challenge_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "prop_bet_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

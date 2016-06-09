@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   get '/games/new' => 'games#new'
   post '/games/new' => 'games#create'
+  get '/games/:id/edit' => 'games#edit', as: 'games_edit'
+  patch '/games/:id/edit' => 'games#update'
   get '/games/:id/show' => 'games#show', as: 'games_show'
   get '/games/index' => 'games#index'
   get '/games/:id/add_home_players' => 'home_players#new', as: 'add_home_player'
@@ -26,6 +28,9 @@ Rails.application.routes.draw do
   post '/games/:id/show' => 'hit_challenges#create', as: 'create_hit_challenge'
   post '/hit_challenges/:id/play' => 'hit_guesses#create', as: 'submit_hit_guess'
   get '/hit_challenges/:id/status' => 'hit_challenges#status', as: 'hit_status'
+  get '/prop_bet/new' => 'prop_bets#new'
+  post '/prop_bet/new' => 'prop_bets#create'
+
 
 
 

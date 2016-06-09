@@ -1,6 +1,7 @@
 <h2><%=@game.home%> vs <%=@game.away%></h2>
 
 <%if is_admin%>
+  <%= link_to "Edit Game", games_edit_path(@game) %>
   <%if @game.has_hit_challenge %>
     <h4>Hit Challenges: </h4>
     <%if @hit_challenges.count > 1%>

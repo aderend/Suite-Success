@@ -1,0 +1,2 @@
+class PropBetsController < ApplicationController
+end
