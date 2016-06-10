@@ -28,8 +28,8 @@ Rails.application.routes.draw do
   post '/games/:id/show' => 'hit_challenges#create', as: 'create_hit_challenge'
   post '/hit_challenges/:id/play' => 'hit_guesses#create', as: 'submit_hit_guess'
   get '/hit_challenges/:id/status' => 'hit_challenges#status', as: 'hit_status'
-  get '/prop_bet/new' => 'prop_bets#new'
-  post '/prop_bet/new' => 'prop_bets#create'
+  get '/prop_bets/new' => 'prop_bets#new'
+  post '/prop_bets/new' => 'prop_bets#create'
 
 
 
