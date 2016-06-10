@@ -5,7 +5,7 @@
     <%= f.label :name %>:
     <%= f.text_field :name %><br />
     <%= f.label :position %>:
-    <%= f.text_field :position %><br />
+    <%= f.select :position, options_for_select(["C", "1B", "2B", "3B", "SS", "RF", "LF", "CF", "DH"]) %><br />
     <%= f.label :batting_avg %>:
     <%= f.text_field :batting_avg %><br />
     <%= f.submit %>
