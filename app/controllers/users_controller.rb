@@ -6,11 +6,15 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(user_params)
-    game_id = Game.last.id
-    hit_challenge = HitChallenge.find_by(game_id: game_id, suite_num: user_params[:suite_num])
+    game = Game.last
+    hit_challenge = HitChallenge.find_by(game_id: game.id, suite_num: user_params[:suite_num])
     if user.save
       session[:user_id] = user.id
-      redirect_to play_hit_challenge_path(hit_challenge)
+      if hit_challenge == nil
+        redirect_to games_show_path(game)
+      else
+        redirect_to play_hit_challenge_path(hit_challenge)
+      end
     else
       redirect_to root_path
     end
