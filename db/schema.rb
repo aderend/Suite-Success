@@ -90,12 +90,15 @@ ActiveRecord::Schema.define(version: 20160609163420) do
 
   create_table "prop_bets", force: :cascade do |t|
     t.integer  "game_id"
+    t.integer  "suite_num"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "body"
+    t.string   "body",        null: false
+    t.string   "choice1",     null: false
+    t.string   "choice2",     null: false
     t.integer  "prop_bet_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
