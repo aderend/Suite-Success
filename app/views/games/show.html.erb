@@ -69,5 +69,8 @@
     <%= f.text_field :suite_num %>
     <%=f.submit "Create Hit Challenge" %>
   <%end%>
+
+  <%= link_to "Create Prop Bet", new_prop_bet_path(:game_id => @game.id) %>
+
 <%end%>
 
