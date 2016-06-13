@@ -35,8 +35,10 @@ Rails.application.routes.draw do
 
   get '/prop_bets/new' => 'prop_bets#new', as: 'new_prop_bet'
   post '/prop_bets/new' => 'prop_bets#create', as: 'create_prop_bet'
-  get '/questions/new' => 'questions#new', as: 'new_question'
-  post '/questions/new' => 'question#create', as: 'create_question'
+  get 'prop_bets/:id/questions/new' => 'questions#new', as: 'new_question'
+  post 'prop_bets/:id/questions/new' => 'questions#create', as: 'create_question'
+  get '/prop_bets/:id/show' => 'prop_bets#show', as: 'show_prop_bet'
+  post '/prop_bets/:id/show'=> 'answers#create', as: 'submit_answers'
 
 
 
