@@ -19,6 +19,6 @@
   <li><%= f.label :email %>
   <%= f.text_field :email %></li>
   <li><%= f.label 'Suite Number' %>
-  <%= f.text_field :suite_num %></li>
+  <%= f.select :suite_num, options_for_select(@suite_numbers.each {|s| s }), {include_blank: 'Pick a Suite Number'}  %></li>
   <%= f.submit "Log In" %>
 <% end %>
