@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def new
+    @suite_numbers = Game.last.hit_challenges.map {|s| s.suite_num}
     @user = User.new
   end
 
