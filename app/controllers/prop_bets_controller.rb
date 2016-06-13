@@ -8,10 +8,16 @@ class PropBetsController < ApplicationController
     game = Game.find(params[:prop_bet][:game_id])
     prop_bet = PropBet.new(game_id: game.id, suite_num: params[:prop_bet][:suite_num])
     if prop_bet.save
-      redirect_to new_question_path
+      redirect_to new_question_path(prop_bet)
     else
-      redirect_to games_show_path(game)
+      redirect_to new_prop_bet_path
     end
+  end
+
+  def show
+    @prop_bet = PropBet.find(params[:id])
+    @game = @prop_bet.game
+    @questions = @prop_bet.questions
   end
 
 end
