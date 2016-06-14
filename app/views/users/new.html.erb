@@ -8,7 +8,7 @@
   <%= f.label :company %>:
   <%= f.text_field :company %><br />
   <%= f.label "Suite Number:" %>:
-  <%= f.select :suite_num, options_for_select(@suite_numbers.each {|s| s }), {include_blank: 'Pick a Suite Number'} %></br>
+  <%= f.select :suite_id, options_for_select(@suite_numbers.map {|s| s.suite_number }), {include_blank: 'Pick a Suite Number'} %></br>
   <%= f.submit %>
 <% end %>
 
@@ -19,6 +19,6 @@
   <li><%= f.label :email %>
   <%= f.text_field :email %></li>
   <li><%= f.label 'Suite Number' %>
-  <%= f.select :suite_num, options_for_select(@suite_numbers.each {|s| s }), {include_blank: 'Pick a Suite Number'}  %></li>
+  <%= f.select :suite_id, options_for_select(@suite_numbers.map {|s| s.suite_number }), {include_blank: 'Pick a Suite Number'}  %></li>
   <%= f.submit "Log In" %>
 <% end %>

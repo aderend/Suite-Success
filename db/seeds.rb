@@ -6,11 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user1 = User.create(name: "Pat Luckett", company: "Novo Consulting", email: "pat@gmail.com", admin: true, title: "hospitality Manager",  suite_num: 0)
-user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.dogrusoy@gmail.com", title: "developer", suite_num: 0)
-
 game1 = Game.create(title: "NYY vs RED SOX", home: "Yankees", away: "RedSox")
-challenge1 = game1.hit_challenges.create(suite_num: 22)
+
+suite1 = Suite.create(game_id: 1, suite_number: 22)
+
+user1 = User.create(name: "Pat Luckett", company: "Novo Consulting", email: "pat@gmail.com", admin: true, title: "hospitality Manager")
+user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.dogrusoy@gmail.com", title: "developer", suite_id: 1)
+
+challenge1 = game1.hit_challenges.create(suite_id: 1)
+
 player1 = game1.home_players.create(name: "Dellin Betances", position: "C", batting_avg: "0.105")
 player3 = game1.home_players.create(name: "Richard Bleier", position: "1B", batting_avg: "0.205")
 player2 = game1.home_players.create(name: "Aroldis Chapman", position: "2B", batting_avg: "0.405")
@@ -29,6 +33,12 @@ player15 = game1.home_players.create(name: "Chris Parmelee", position: "DH", bat
 player16 = game1.away_players.create(name: "Starlin Castro", position: "LF", batting_avg: "0.405")
 player17 = game1.away_players.create(name: "Austin Romine", position: "CF", batting_avg: "0.405")
 player18 = game1.away_players.create(name: "Brian McCann", position: "DH", batting_avg: "0.405")
+
+prop_bet1 = PropBet.create(game_id: 1, suite_id: 1)
+
+question1 = Question.create(body: "Red or Blue", choice1: "Red", choice2: "Blue", prop_bet_id: 1)
+
+
 
 
 

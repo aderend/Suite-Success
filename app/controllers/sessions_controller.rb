@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user
       session[:user_id] = user.id
-      suite = params[:session][:suite_num].to_i
       game = Game.last
-      hit_challenge = HitChallenge.find_by(game_id: game.id, suite_num: suite)
-      if hit_challenge == nil
+      suite = Suite.find_by(suite_number: params[:session][:suite_id], game_id: game.id)
+      hit_challenge = HitChallenge.find_by(game_id: game.id, suite_id: suite.id)
+      if (hit_challenge == nil) || is_admin
         redirect_to user_path(user)
       else
         redirect_to play_hit_challenge_path(hit_challenge)
