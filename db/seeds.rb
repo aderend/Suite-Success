@@ -31,3 +31,4 @@ player17 = game1.away_players.create(name: "Austin Romine", position: "CF", batt
 player18 = game1.away_players.create(name: "Brian McCann", position: "DH", batting_avg: "0.405")
 
 
+
