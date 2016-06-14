@@ -2,6 +2,9 @@ class Game < ActiveRecord::Base
   has_many :hit_challenges
   has_many :away_players
   has_many :home_players
+  has_many :suites
+
+  accepts_nested_attributes_for :suites
 
    def total_hits
     home_players = self.home_players
