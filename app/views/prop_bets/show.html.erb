@@ -1,18 +1,16 @@
 <h3>Welcome to the Prop Bets for <%= @game.title %></h3>
 
 Questions:
+<p>
+<%=form_tag submit_answers_path do %>
+  <%@questions.count.times do |i| %>
+    <%=@questions[i].body%>:
+    <li><%="#{@questions[i].choice1}" %>
+    <%= radio_button_tag i, @questions[i].choice1 %></li>
+    <li><%="#{@questions[i].choice2}" %>
+    <%= radio_button_tag i, @questions[i].choice2 %></li>
+  <%end%>
+  <%=submit_tag "Submit Answers" %>
+<%end%>
 
-  <%=form_for :answers do |ans| %>
-  <%=@questions.each do |q| %>
-      <%=ans.fields_for :ans do |a| %>
-        <p>
-          <%=a.label "#{q.body}"%>: </br>
-          <%=a.label (:choice1), "#{q.choice1}" %>
-          <%=a.check_box(:choice) %>
-          <%=a.label (:choice2), "#{q.choice2}" %>
-          <%=a.check_box(:choice) %>
-        </p>
-      <%end%>
-  <%end%>
-      <%= ans.submit "Submit Answers" %>
-  <%end%>
+</p>
