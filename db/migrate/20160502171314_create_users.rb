@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email, null: false
       t.string :company, null: false
       t.string :title
-      t.integer :suite_num, null: false
+      t.integer :suite_id
       t.boolean :admin, default: false
 
       t.timestamps null: false

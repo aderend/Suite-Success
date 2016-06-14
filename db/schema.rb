@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609163420) do
+ActiveRecord::Schema.define(version: 20160614172304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20160609163420) do
   end
 
   create_table "hit_challenges", force: :cascade do |t|
-    t.integer  "game_id"
-    t.integer  "suite_num",                  null: false
+    t.integer  "game_id",                    null: false
+    t.integer  "suite_id",                   null: false
     t.integer  "inning"
     t.boolean  "over",       default: false
     t.datetime "created_at",                 null: false
@@ -90,8 +90,8 @@ ActiveRecord::Schema.define(version: 20160609163420) do
   end
 
   create_table "prop_bets", force: :cascade do |t|
-    t.integer  "game_id"
-    t.integer  "suite_num"
+    t.integer  "game_id",    null: false
+    t.integer  "suite_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -105,12 +105,19 @@ ActiveRecord::Schema.define(version: 20160609163420) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "suites", force: :cascade do |t|
+    t.integer  "suite_number", null: false
+    t.integer  "game_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name",                       null: false
     t.string   "email",                      null: false
     t.string   "company",                    null: false
     t.string   "title"
-    t.integer  "suite_num",                  null: false
+    t.integer  "suite_id"
     t.boolean  "admin",      default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
