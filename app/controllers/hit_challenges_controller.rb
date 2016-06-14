@@ -2,11 +2,12 @@ class HitChallengesController < ApplicationController
 
   def create
     game = Game.find(params[:id])
-    hit_challenge = HitChallenge.new(game_id: game.id, suite_num: params[:hit_challenge][:suite_num])
+    suite_id = Suite.find_by(suite_number: params[:hit_challenge][:suite_id], game_id: game.id).id
+    hit_challenge = HitChallenge.new(game_id: game.id, suite_id: suite_id)
     if hit_challenge.save
-      redirect_to hit_status_path(hit_challenge)
-    else
       redirect_to games_show_path(game)
+    else
+      render games_show_path(game)
     end
   end
 
