@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
 
   def new
+    @suite_numbers = Game.last.hit_challenges.map {|s| s.suite_num}
     @user = User.new
   end
 
   def create
-    user = User.new(user_params)
+   user = User.new(user_params)
     game = Game.last
     hit_challenge = HitChallenge.find_by(game_id: game.id, suite_num: user_params[:suite_num])
     if user.save
