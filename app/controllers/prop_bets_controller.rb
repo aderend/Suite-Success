@@ -15,6 +15,7 @@ class PropBetsController < ApplicationController
   end
 
   def show
+    @user = current_user
     @prop_bet = PropBet.find(params[:id])
     @game = @prop_bet.game
     @questions = @prop_bet.questions
