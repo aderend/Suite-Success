@@ -7,8 +7,9 @@ class UsersController < ApplicationController
 
   def create
    user = User.new(user_params)
+   suite_id = Suite.find_by(suite_number: user_params[:suite_id]).id
     game = Game.last
-    hit_challenge = HitChallenge.find_by(game_id: game.id, suite_num: user_params[:suite_num])
+    hit_challenge = HitChallenge.find_by(game_id: game.id, suite_id: suite_id)
     if user.save
       session[:user_id] = user.id
       if hit_challenge == nil
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
   def  user_params
 
-    params.require(:user).permit(:name, :email, :company, :title, :suite_num)
+    params.require(:user).permit(:name, :email, :company, :title, :suite_id)
 
   end
 

@@ -7,7 +7,8 @@ class GamesController < ApplicationController
   def create
     game = Game.new(game_params)
     if game.save
-      redirect_to add_home_player_path(game)
+      Suite.create(suite_number: 999, game_id: game.id)
+      redirect_to games_show_path(game)
     else
       redirect_to root_path
     end
