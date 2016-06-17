@@ -6,7 +6,6 @@ class User < ActiveRecord::Base
   belongs_to :prop_bet
   belongs_to :suite
 
-
   validates_presence_of :email, :name, :company, :title
 
 end

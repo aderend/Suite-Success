@@ -1,0 +1,3 @@
+<%@users.each do |user| %>
+  <%=user.name%>: <%=user.calculate_prop_score(@prop_bet.id)%>
+<%end%>

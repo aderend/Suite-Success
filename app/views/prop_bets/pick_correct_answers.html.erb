@@ -1,0 +1,15 @@
+<%=form_tag submit_correct_answers_path do %>
+  <%@questions.count.times do |i| %>
+    <%=@questions[i].body %>
+    <li>
+      <%="#{@questions[i].choice1}" %>
+      <%= check_box_tag i, @questions[i].choice1 %>
+    </li>
+    <li>
+      <%="#{@questions[i].choice2}" %>
+      <%= check_box_tag i, @questions[i].choice2 %>
+    </li>
+  <%end%>
+  <%= submit_tag "Submit Correct Answers" %>
+
+<%end%>
