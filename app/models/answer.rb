@@ -10,7 +10,7 @@ class Answer < ActiveRecord::Base
       i += 1
     end
     unsaved_answers
-  en
+  end
 
   def self.check_save(answer_array)
     return true if answer_array.each {|ans| ans.save}
