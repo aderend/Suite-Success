@@ -7,7 +7,7 @@
   <%= f.text_field :title %><br />
   <%= f.label :company %>:
   <%= f.text_field :company %><br />
-  <%= f.label "Suite Number:" %>:
+  <%= f.label "Suite Number" %>:
   <%= f.select :suite_id, options_for_select(@suite_numbers.map {|s| s.suite_number unless (s.suite_number == 0) }), {include_blank: 'Pick a Suite Number'} %></br>
   <%= f.submit %>
 <% end %>

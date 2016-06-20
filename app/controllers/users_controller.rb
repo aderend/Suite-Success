@@ -6,8 +6,9 @@ class UsersController < ApplicationController
   end
 
   def create
-   user = User.new(user_params)
-   suite_id = Suite.find_by(suite_number: user_params[:suite_id]).id
+    suite_id = Suite.find_by(suite_number: user_params[:suite_id]).id
+    user = User.new(user_params)
+    user.suite_id = suite_id
     game = Game.last
     hit_challenge = HitChallenge.find_by(game_id: game.id, suite_id: suite_id)
     if user.save

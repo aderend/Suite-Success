@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :name, :company, :title
 
   def user_answer_for_question(question)
-    answer = question.answers.find_by(user_id: self.id).choice
+    if Answer.find_by(user: self) != nil
+      question.answers.find_by(user_id: self.id).choice
+    else
+      "No Answer"
+    end
   end
 
   def calculate_prop_score(prop_bet)
