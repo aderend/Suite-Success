@@ -45,8 +45,7 @@ class PropBetsController < ApplicationController
     @prop_bet = PropBet.find(params[:id])
     @questions = @prop_bet.questions
     @users = @prop_bet.users
-    @answers = @prop_bet.answers
-
+    @scores = @prop_bet.display_scores
   end
 
 end
