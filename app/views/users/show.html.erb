@@ -1,4 +1,4 @@
-Today's Game: <%= link_to @active_game.title, games_show_path(@active_game) %></br>
+Last Created Game: <%= link_to @active_game.title, games_show_path(@active_game) %></br>
 </br>
 <% if is_admin %>
   <%=link_to "Create a Game", games_new_path %>

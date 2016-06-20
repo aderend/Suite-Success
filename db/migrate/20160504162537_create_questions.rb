@@ -4,6 +4,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.string :body, null: false
       t.string :choice1, null: false
       t.string :choice2, null: false
+      t.string :correct_choice
       t.integer :prop_bet_id
 
       t.timestamps null: false

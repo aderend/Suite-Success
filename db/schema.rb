@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20160614172304) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "choice"
-    t.integer  "prop_bet_id"
     t.integer  "user_id"
+    t.integer  "question_id"
+    t.integer  "prop_bet_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -97,16 +98,17 @@ ActiveRecord::Schema.define(version: 20160614172304) do
   end
 
   create_table "questions", force: :cascade do |t|
-    t.string   "body",        null: false
-    t.string   "choice1",     null: false
-    t.string   "choice2",     null: false
+    t.string   "body",           null: false
+    t.string   "choice1",        null: false
+    t.string   "choice2",        null: false
+    t.string   "correct_choice"
     t.integer  "prop_bet_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "suites", force: :cascade do |t|
-    t.integer  "suite_number", null: false
+    t.string   "suite_number", null: false
     t.integer  "game_id",      null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

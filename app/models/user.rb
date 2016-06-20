@@ -6,7 +6,20 @@ class User < ActiveRecord::Base
   belongs_to :prop_bet
   belongs_to :suite
 
-
   validates_presence_of :email, :name, :company, :title
+
+  def user_answer_for_question(question)
+    answer = question.answers.find_by(user_id: self.id).choice
+  end
+
+  def calculate_prop_score(prop_bet)
+    score = 0
+    prop_bet.questions.each do |q|
+      if q.correct_choice == self.user_answer_for_question(q)
+        score += 1
+      end
+    end
+    score
+  end
 
 end

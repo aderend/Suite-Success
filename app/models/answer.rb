@@ -3,15 +3,17 @@ class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :prop_bet
 
-  def self.submit_many_answers(choices, user)
+  def self.submit_many_answers(choices, user, questions)
     unsaved_answers = []
-    choices.each do |cho|
-      unsaved_answers << Answer.new(choice: cho, user_id: user.id)
+    choices.each_with_index do |cho, i|
+      unsaved_answers << Answer.new(choice: cho, user_id: user.id, question: questions[i], prop_bet: questions[i].prop_bet)
+      i += 1
     end
     unsaved_answers
-  end
+  en
 
   def self.check_save(answer_array)
     return true if answer_array.each {|ans| ans.save}
   end
+
 end

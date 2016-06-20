@@ -8,7 +8,7 @@
 
 game1 = Game.create(title: "NYY vs RED SOX", home: "Yankees", away: "RedSox")
 
-suite1 = Suite.create(game_id: 1, suite_number: 22)
+suite1 = Suite.create(game_id: 1, suite_number: "22")
 
 user1 = User.create(name: "Pat Luckett", company: "Novo Consulting", email: "pat@gmail.com", admin: true, title: "hospitality Manager")
 user2 = User.create(name: "Deren Dogrusoy", company: 'Altinyildiz', email: "d.dogrusoy@gmail.com", title: "developer", suite_id: 1)
@@ -36,7 +36,9 @@ player18 = game1.away_players.create(name: "Brian McCann", position: "DH", batti
 
 prop_bet1 = PropBet.create(game_id: 1, suite_id: 1)
 
-question1 = Question.create(body: "Red or Blue", choice1: "Red", choice2: "Blue", prop_bet_id: 1)
+question1 = Question.create(body: "Red or Blue", choice1: "Red", choice2: "Blue", prop_bet_id: 1, correct_choice: "Blue")
+question2 = Question.create(body: "Day or Night", choice1: "Day", choice2: "Night", prop_bet_id: 1, correct_choice: "Day")
+question3 = Question.create(body: "Good or Evil", choice1: "Good", choice2: "Evil", prop_bet_id: 1, correct_choice: "Good")
 
 
 
