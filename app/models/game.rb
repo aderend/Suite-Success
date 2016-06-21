@@ -1,5 +1,6 @@
 class Game < ActiveRecord::Base
   has_many :hit_challenges
+  has_many :prop_bets
   has_many :away_players
   has_many :home_players
   has_many :suites
@@ -21,6 +22,10 @@ class Game < ActiveRecord::Base
 
   def has_hit_challenge
     (self.hit_challenges.count > 0) ? true : false
+  end
+
+  def has_prop_bet
+    (self.prop_bets.count > 0) ? true : false
   end
 
 end
