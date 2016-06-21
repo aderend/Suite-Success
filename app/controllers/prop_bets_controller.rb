@@ -23,9 +23,9 @@ class PropBetsController < ApplicationController
   end
 
   def pick_correct_answers
+    redirect_to games_show_path(@game) unless is_admin
     @prop_bet = PropBet.find(params[:id])
     @game = @prop_bet.game
-    redirect_to games_show_path(@game) unless is_admin
     @questions = @prop_bet.questions
   end
 
