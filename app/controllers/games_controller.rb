@@ -32,6 +32,7 @@ class GamesController < ApplicationController
     redirect_to root_path unless current_user
     @game = Game.find(params[:id])
     @hit_challenges = @game.hit_challenges
+    @prop_bets = @game.prop_bets
     @suites = @game.suites
     @home_players = @game.home_players.order(position: :asc)
     @away_players = @game.away_players.order(position: :asc)
