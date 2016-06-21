@@ -33,6 +33,14 @@
       <%= link_to "Suite: #{@hit_challenges.first.suite.suite_number}", hit_status_path(@hit_challenges.first) %>
     <%end%>
   <%end%>
+  <%if @game.has_prop_bet%>
+    <h4> Prop Bets:</h4>
+    <% @prop_bets.each do |prop| %>
+      <li><%=link_to "Suite: #{prop.suite.suite_number}", prop_status_path(prop) %></li>
+    <%end%>
+  <%else%>
+    <%= link_to "Suite: #{@prop_bets.first.suite.suite_number}", prop_status_path(@prop_bets.first) %>
+  <%end%>
   <p>
     <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
     <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
