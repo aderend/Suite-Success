@@ -32,6 +32,7 @@ Rails.application.routes.draw do
 
   post '/hit_challenges/:id/play' => 'hit_guesses#create', as: 'submit_hit_guess'
   get '/hit_challenges/:id/status' => 'hit_challenges#status', as: 'hit_status'
+  delete '/hit_challenges/:id' =>  'hit_challenges#destroy', as:'delete_hit_challenge'
 
   get '/prop_bets/new' => 'prop_bets#new', as: 'new_prop_bet'
   post '/prop_bets/new' => 'prop_bets#create', as: 'create_prop_bet'
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
   get '/prop_bets/:id/pick_correct_answers' => 'prop_bets#pick_correct_answers', as: 'pick_correct_answers'
   post '/prop_bets/:id/pick_correct_answers' => 'prop_bets#submit_correct_answers', as: 'submit_correct_answers'
   get '/prop_bets/:id/status' => 'prop_bets#status', as: 'prop_status'
+  delete '/prop_bets/:id' => 'prop_bets#destroy', as: 'delete_prop_bet'
 
   post '/suites/new' => 'suites#create', as: 'create_suite'
 
