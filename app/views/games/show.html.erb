@@ -32,6 +32,7 @@
         <li>
         <%= "Suite #{h.suite.suite_number}:" %>
         <%= link_to "Status", hit_status_path(h) %>
+        <%= link_to "Play", play_hit_challenge_path(h) %>
         <%= form_for h, url: delete_hit_challenge_path(h), method: :delete do |f| %>
         <%= f.hidden_field :hit_challenge_id, value: h.id %>
         <%= f.submit "Delete" %>
@@ -41,6 +42,7 @@
     <%else%>
       <%= "Suite #{@hit_challenges.first.suite.suite_number}:" %>
       <%= link_to "Status", hit_status_path(@hit_challenges.first) %>
+      <%= link_to "Play", play_hit_challenge_path(@hit_challenges.first) %>
       <%= form_for @hit_challenges.first, url: delete_hit_challenge_path(@hit_challenges.first), method: :delete do |f| %>
         <%= f.hidden_field :hit_challenge_id, value: @hit_challenges.first.id %>
         <%= f.submit "Delete" %>
@@ -57,6 +59,8 @@
         <li>
           <%= "Suite #{prop.suite.suite_number}:" %>
           <%=link_to "Status", prop_status_path(prop) %>
+          <%=link_to "Play", show_prop_bet_path(prop) %>
+          <%=link_to "Edit", edit_prop_path(prop) %>
           <%= form_for prop, url: delete_prop_bet_path(prop), method: :delete do |f| %>
             <%= f.hidden_field :prop_id, value: prop.id %>
             <%= f.submit "Delete" %>
@@ -67,6 +71,8 @@
       <li>
       <%="Suite #{@prop_bets.first.suite.suite_number}:" %>
       <%= link_to "Status", prop_status_path(@prop_bets.first) %>
+      <%= link_to "Play", show_prop_bet_path(@prop_bets.first) %>
+      <%=link_to "Edit", edit_prop_path(@prop_bets.first) %>
       <%= form_for @prop_bets.first, url: delete_prop_bet_path(@prop_bets.first), method: :delete do |f| %>
         <%= f.hidden_field :prop_id, value: @prop_bets.first.id %>
         <%= f.submit "Delete" %>
