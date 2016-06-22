@@ -15,6 +15,20 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def edit
+    @question = Question.find(params[:id])
+  end
+
+  def update
+    question = Question.find(params[:id])
+    game = question.prop_bet.game
+    if question.update_attributes(question_params)
+      redirect_to edit_prop_path(question.prop_bet)
+    else
+      redirect_to games_edit_path(game)
+    end
+  end
+
   private
 
   def question_params
