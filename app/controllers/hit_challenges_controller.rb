@@ -41,4 +41,11 @@ class HitChallengesController < ApplicationController
     @guesses = @hit_challenge.hit_guesses
   end
 
+  def destroy
+    hit_challenge = HitChallenge.find(params[:id])
+    game = hit_challenge.game
+    hit_challenge.destroy
+    redirect_to games_show_path(game)
+  end
+
 end
