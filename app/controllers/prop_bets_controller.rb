@@ -48,6 +48,12 @@ class PropBetsController < ApplicationController
     @scores = @prop_bet.display_scores
   end
 
+  def edit
+    prop_bet = PropBet.find(params[:id])
+    @questions = prop_bet.questions
+    @game = prop_bet.game
+  end
+
   def destroy
     prop_bet = PropBet.find(params[:id])
     game = prop_bet.game
