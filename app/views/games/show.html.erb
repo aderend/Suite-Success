@@ -35,11 +35,13 @@
   <%end%>
   <%if @game.has_prop_bet%>
     <h4> Prop Bets:</h4>
-    <% @prop_bets.each do |prop| %>
-      <li><%=link_to "Suite: #{prop.suite.suite_number}", prop_status_path(prop) %></li>
-    <%end%>
-  <%else%>
+    <%if @prop_bets.count > 1 %>
+      <% @prop_bets.each do |prop| %>
+        <li><%=link_to "Suite: #{prop.suite.suite_number}", prop_status_path(prop) %></li>
+      <%end%>
+    <%else%>
     <%= link_to "Suite: #{@prop_bets.first.suite.suite_number}", prop_status_path(@prop_bets.first) %>
+    <%end%>
   <%end%>
   <p>
     <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
