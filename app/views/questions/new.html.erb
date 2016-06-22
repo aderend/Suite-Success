@@ -1,6 +1,6 @@
 <%=form_for :question, url: create_question_path do |f| %>
   <li><%= f.label :body %>
-  <%=f.text_field :body %></li>
+  <%=f.text_area :body %></li>
   <li><%=f.label 'First Choice:' %>
   <%=f.text_field :choice1 %></li>
   <li><%=f.label 'Second Choice:' %>
@@ -8,4 +8,4 @@
   <%=hidden_field(:question, :prop_id, :value => params[:id])%>
   <%= f.submit 'Create Question'%>
 <%end%>
-<%= link_to 'Done Adding Questions', show_prop_bet_path(@prop_bet) %>
+<%= link_to 'Done Adding Questions',  pick_correct_answers_path(@prop_bet) %>

@@ -1,0 +1,11 @@
+<%@questions.each do |q| %>
+  <li>
+    <%=q.body%> <%=link_to "Edit", edit_question_path(q) %>
+  </li>
+
+  <%=q.choice1%></br>
+  <%=q.choice2%>
+<%end%>
+<p>
+<%= link_to "Done!", games_show_path(@game) %>
+</p>

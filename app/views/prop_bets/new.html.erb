@@ -1,6 +1,6 @@
- <%=form_for :prop_bet, url: create_prop_bet_path do |f| %>
-    <%=f.label 'Suite Number:' %>
-    <%= f.text_field :suite_num %>
-    <%= f.hidden_field :game_id, value: params[:game_id] %>
-    <%=f.submit "Create Prop Bet" %>
-  <%end%>
+<%=form_for :prop_bet, url: create_prop_bet_path do |f| %>
+  <%=f.label 'Suite Number:' %>
+  <%= f.text_field :suite_num %>
+  <%= f.hidden_field :game_id, value: params[:game_id] %>
+  <%=f.submit "Create Prop Bet" %>
+<%end%>

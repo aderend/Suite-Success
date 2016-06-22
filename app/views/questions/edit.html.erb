@@ -1,0 +1,11 @@
+<h3>Edit Question:</h3>
+
+<%= form_for @question, url:  update_prop_question_path do |f| %>
+  <%= f.label :body %>:
+  <%= f.text_area :body, value: "#{@question.body}" %><br />
+  <%= f.label :choice1 %>:
+  <%= f.text_field :choice1 %><br />
+  <%= f.label :choice2 %>:
+  <%= f.text_field :choice2 %><br />
+  <%= f.submit %>
+<% end %>
