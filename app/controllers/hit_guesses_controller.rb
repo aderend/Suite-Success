@@ -9,7 +9,7 @@ class HitGuessesController < ApplicationController
     prop_bet = PropBet.find_by(suite_id: suite.id)
     if hit_guess.save
       redirect_to show_prop_bet_path(prop_bet) unless suite == nil
-      redirect to game_show_path(game)
+      redirect to games_show_path(game)
     else
       redirect_to show_hit_challenge(hit_challenge)
     end
