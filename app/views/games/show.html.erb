@@ -24,23 +24,54 @@
 </p>
   <%= link_to "Edit Game", games_edit_path(@game) %>
   <%if @game.has_hit_challenge %>
+
     <h4>Hit Challenges: </h4>
+
     <%if @hit_challenges.count > 1%>
       <% @hit_challenges.each do |h|%>
-        <li><%= link_to "Suite: #{h.suite.suite_number}", hit_status_path(h) %></li>
+        <li>
+        <%= "Suite #{h.suite.suite_number}:" %>
+        <%= link_to "Status", hit_status_path(h) %>
+        <%= form_for h, url: delete_hit_challenge_path(h), method: :delete do |f| %>
+        <%= f.hidden_field :hit_challenge_id, value: h.id %>
+        <%= f.submit "Delete" %>
+      <%end%>
+        </li>
       <%end%>
     <%else%>
-      <%= link_to "Suite: #{@hit_challenges.first.suite.suite_number}", hit_status_path(@hit_challenges.first) %>
+      <%= "Suite #{@hit_challenges.first.suite.suite_number}:" %>
+      <%= link_to "Status", hit_status_path(@hit_challenges.first) %>
+      <%= form_for @hit_challenges.first, url: delete_hit_challenge_path(@hit_challenges.first), method: :delete do |f| %>
+        <%= f.hidden_field :hit_challenge_id, value: @hit_challenges.first.id %>
+        <%= f.submit "Delete" %>
+      <%end%>
     <%end%>
   <%end%>
+
   <%if @game.has_prop_bet%>
+
     <h4> Prop Bets:</h4>
+
     <%if @prop_bets.count > 1 %>
       <% @prop_bets.each do |prop| %>
-        <li><%=link_to "Suite: #{prop.suite.suite_number}", prop_status_path(prop) %></li>
+        <li>
+          <%= "Suite #{prop.suite.suite_number}:" %>
+          <%=link_to "Status", prop_status_path(prop) %>
+          <%= form_for prop, url: delete_prop_bet_path(prop), method: :delete do |f| %>
+            <%= f.hidden_field :prop_id, value: prop.id %>
+            <%= f.submit "Delete" %>
+          <%end%>
+        </li>
       <%end%>
     <%else%>
-    <%= link_to "Suite: #{@prop_bets.first.suite.suite_number}", prop_status_path(@prop_bets.first) %>
+      <li>
+      <%="Suite #{@prop_bets.first.suite.suite_number}:" %>
+      <%= link_to "Status", prop_status_path(@prop_bets.first) %>
+      <%= form_for @prop_bets.first, url: delete_prop_bet_path(@prop_bets.first), method: :delete do |f| %>
+        <%= f.hidden_field :prop_id, value: @prop_bets.first.id %>
+        <%= f.submit "Delete" %>
+      <%end%>
+      </li>
     <%end%>
   <%end%>
   <p>
