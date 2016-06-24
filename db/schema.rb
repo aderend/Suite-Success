@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160614172304) do
     t.string   "position",                null: false
     t.string   "batting_avg",             null: false
     t.integer  "at_bat",      default: 0
+    t.string   "team"
     t.integer  "game_id",                 null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -64,15 +65,6 @@ ActiveRecord::Schema.define(version: 20160614172304) do
     t.string   "pos_rf"
     t.string   "pos_cf"
     t.string   "pos_dh"
-    t.string   "away_pos_c"
-    t.string   "away_pos_1b"
-    t.string   "away_pos_2b"
-    t.string   "away_pos_3b"
-    t.string   "away_pos_ss"
-    t.string   "away_pos_lf"
-    t.string   "away_pos_rf"
-    t.string   "away_pos_cf"
-    t.string   "away_pos_dh"
     t.integer  "total_hits"
     t.integer  "hit_challenge_id"
     t.integer  "user_id"
@@ -85,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160614172304) do
     t.string   "position",                null: false
     t.string   "batting_avg",             null: false
     t.integer  "at_bat",      default: 0
+    t.string   "team"
     t.integer  "game_id",                 null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
