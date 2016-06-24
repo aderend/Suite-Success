@@ -1,51 +1,30 @@
-Home Team Vs Away Team
 <%=form_for :hit_guess do |f| %>
   C:
-  <%= f.select :pos_c, options_for_select(@c_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_c, options_for_select(@c_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_c, options_for_select(@c_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
-
   1B:
-  <%= f.select :pos_1b, options_for_select(@b1_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_1b, options_for_select(@b1_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_1b, options_for_select(@b1_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   2B:
-  <%= f.select :pos_2b, options_for_select(@b2_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_2b, options_for_select(@b2_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_2b, options_for_select(@b2_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   3B:
-  <%= f.select :pos_3b, options_for_select(@b3_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_3b, options_for_select(@b3_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_3b, options_for_select(@b3_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
-
   SS:
-  <%= f.select :pos_ss, options_for_select(@ss_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_ss, options_for_select(@ss_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_ss, options_for_select(@ss_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_lf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_lf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_lf, options_for_select(@lf_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_rf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_rf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_rf, options_for_select(@rf_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   OF:
-  <%= f.select :pos_cf, options_for_select(@of_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_cf, options_for_select(@of_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_cf, options_for_select(@cf_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   DH/P:
-  <%= f.select :pos_dh, options_for_select(@DHP_home_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
-  OR
-  <%= f.select :away_pos_dh, options_for_select(@DHP_away_players.map {|p| "#{p.name}: #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
+  <%= f.select :pos_dh, options_for_select(@dh_players.map {|p| "#{p.team}: #{p.name} #{p.batting_avg}"}), {include_blank: 'View Available Players'} %>
   </br>
   TIE BREAKER:</br>
   <%=f.label :total_hits %>
@@ -54,6 +33,7 @@ Home Team Vs Away Team
 <%end%>
 
 <%= link_to "Game Page", games_show_path(@game) %>
+
 
 
 
