@@ -85,7 +85,11 @@
     <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
   </p>
 <%end%>
-<h5> Total Hits: <%=@game.total_hits%>
+<h5> Total Hits:
+  <%=form_for @game, url: update_game_hits_path do |f| %>
+    <%=f.text_field :total_hits%>
+    <%=f.submit "Update Hits" %>
+  <%end%>
 <h4>Home Players:</h4>
 <% @home_players.each do |p| %>
   <%= p.position%> -
