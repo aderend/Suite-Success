@@ -1,3 +1,4 @@
+<%=@game.title%>
 <%=form_for :hit_guess do |f| %>
   C:
   <%= f.select :pos_c, options_for_select(@c_players.map {|p| "#{p.name}: #{p.batting_avg} (#{p.team})"}), {include_blank: 'View Available Players'} %>
