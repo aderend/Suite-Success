@@ -15,16 +15,25 @@ class GamesController < ApplicationController
   end
 
   def edit
+    redirect_to games_show_path(game) unless is_admin
     game = Game.find(params[:id])
   end
 
   def update
     game = Game.find(params[:id])
-    redirect_to games_show_path(game) unless is_admin
     if game.update_attributes(game_params)
       redirect_to games_show_path(game)
     else
       redirect_to games_edit_path(game)
+    end
+  end
+
+  def update_total_hits
+    game = Game.find(params[:id])
+    if game.update_attributes(game_params)
+      redirect_to games_show_path(game)
+    else
+      render games_show_path(game)
     end
   end
 
@@ -45,7 +54,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:home, :away, :sport, :title)
+    params.require(:game).permit(:home, :away, :sport, :title, :total_hits)
   end
 
 end
