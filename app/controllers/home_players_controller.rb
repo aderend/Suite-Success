@@ -8,7 +8,7 @@ class HomePlayersController < ApplicationController
 
   def create
     game = Game.find(params[:id])
-    home_player = HomePlayer.new(player_params.merge(game_id: game.id))
+    home_player = HomePlayer.new(player_params.merge(game_id: game.id, team: game.home))
     if home_player.save
       redirect_to add_home_player_path(game)
     else

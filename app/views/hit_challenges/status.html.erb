@@ -1,6 +1,6 @@
 <h3>Hit Challenge: <%=@hit_challenge.game.title%></h3>
 
 <h5>Players</h5>
-<%@guesses.each do |g| %>
-  <li><%=g.user.name%>- Points: <%=g.calculate_points%>, Total Hits:<%=g.total_hits%></li>
+<%@scores.each_pair do |score, info| %>
+  <li><%="#{info[0]}: " "#{score} (Total Hits: #{info[1]})"%></li>
 <%end%>

@@ -38,6 +38,7 @@ class PropBetsController < ApplicationController
       questions[index].correct_choice = params[index.to_s]
       index += 1
     end
+    Question.save_multiple_questions(questions)
     redirect_to prop_status_path(prop_bet)
   end
 

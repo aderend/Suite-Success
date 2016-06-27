@@ -15,30 +15,20 @@ class HitChallengesController < ApplicationController
     redirect_to root_path unless current_user
     hit_challenge = HitChallenge.find(params[:id])
     @game = hit_challenge.game
-    @home_players = hit_challenge.game.home_players
-    @c_home_players = hit_challenge.home_list_players("C")
-    @b1_home_players = hit_challenge.home_list_players("1B")
-    @b2_home_players = hit_challenge.home_list_players("2B")
-    @b3_home_players = hit_challenge.home_list_players("3B")
-    @ss_home_players = hit_challenge.home_list_players("SS")
-    @of_home_players = hit_challenge.home_list_players("RF")
-    @of_home_players = hit_challenge.home_list_players("LF")
-    @of_home_players = hit_challenge.home_list_players("CF")
-    @DHP_home_players = hit_challenge.home_list_players("DH")
-    @c_away_players = hit_challenge.away_list_players("C")
-    @b1_away_players = hit_challenge.away_list_players("1B")
-    @b2_away_players = hit_challenge.away_list_players("2B")
-    @b3_away_players = hit_challenge.away_list_players("3B")
-    @ss_away_players = hit_challenge.away_list_players("SS")
-    @of_away_players = hit_challenge.away_list_players("RF")
-    @of_away_players = hit_challenge.away_list_players("LF")
-    @of_away_players = hit_challenge.away_list_players("CF")
-    @DHP_away_players = hit_challenge.away_list_players("DH")
+    @c_players = hit_challenge.game.away_players.where(position: "C") + hit_challenge.game.home_players.where(position: "C")
+    @b1_players = hit_challenge.game.away_players.where(position: "1B") + hit_challenge.game.home_players.where(position: "1B")
+    @b2_players = hit_challenge.game.away_players.where(position: "2B") + hit_challenge.game.home_players.where(position: "2B")
+    @b3_players = hit_challenge.game.away_players.where(position: "3B") + hit_challenge.game.home_players.where(position: "3B")
+    @ss_players = hit_challenge.game.away_players.where(position: "SS") + hit_challenge.game.home_players.where(position: "SS")
+    @lf_players = hit_challenge.game.away_players.where(position: "LF") + hit_challenge.game.home_players.where(position: "LF")
+    @rf_players = hit_challenge.game.away_players.where(position: "RF") + hit_challenge.game.home_players.where(position: "RF")
+    @cf_players = hit_challenge.game.away_players.where(position: "CF") + hit_challenge.game.home_players.where(position: "CF")
+    @dh_players = hit_challenge.game.away_players.where(position: "DH") + hit_challenge.game.home_players.where(position: "DH")
   end
 
   def status
     @hit_challenge = HitChallenge.find(params[:id])
-    @guesses = @hit_challenge.hit_guesses
+    @scores = @hit_challenge.display_scores
   end
 
   def destroy
