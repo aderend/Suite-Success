@@ -5,7 +5,7 @@ class HitGuessesController < ApplicationController
     game = hit_challenge.game_id
     hit_guess = hit_challenge.hit_guesses.new(hit_guess_params)
     hit_guess.user_id = current_user.id
-    suite = current_user.suite
+    suite = hit_challenge.suite
     prop_bet = PropBet.find_by(suite_id: suite.id)
     if hit_guess.save
       redirect_to show_prop_bet_path(prop_bet)
