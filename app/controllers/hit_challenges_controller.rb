@@ -24,12 +24,11 @@ class HitChallengesController < ApplicationController
     @rf_players = hit_challenge.game.away_players.where(position: "RF") + hit_challenge.game.home_players.where(position: "RF")
     @cf_players = hit_challenge.game.away_players.where(position: "CF") + hit_challenge.game.home_players.where(position: "CF")
     @dh_players = hit_challenge.game.away_players.where(position: "DH") + hit_challenge.game.home_players.where(position: "DH")
-
   end
 
   def status
     @hit_challenge = HitChallenge.find(params[:id])
-    @guesses = @hit_challenge.hit_guesses
+    @scores = @hit_challenge.display_scores
   end
 
   def destroy
