@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   patch '/games/:id/edit' => 'games#update'
   get '/games/:id/show' => 'games#show', as: 'games_show'
   get '/games/index' => 'games#index'
+  patch '/games/:id/total_hits' => 'games#update_total_hits', as: 'update_game_hits'
 
   get '/games/:id/add_home_players' => 'home_players#new', as: 'add_home_player'
   post '/games/:id/add_home_players' => 'home_players#create'
