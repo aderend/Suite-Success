@@ -3,6 +3,7 @@ class CreatePropBets < ActiveRecord::Migration
     create_table :prop_bets do |t|
       t.integer :game_id, null: false
       t.integer :suite_id, null: false
+      t.string :title
 
       t.timestamps null: false
     end

@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160614172304) do
   create_table "hit_challenges", force: :cascade do |t|
     t.integer  "game_id",                    null: false
     t.integer  "suite_id",                   null: false
-    t.integer  "inning"
+    t.string   "title"
     t.boolean  "over",       default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -87,6 +87,7 @@ ActiveRecord::Schema.define(version: 20160614172304) do
   create_table "prop_bets", force: :cascade do |t|
     t.integer  "game_id",    null: false
     t.integer  "suite_id",   null: false
+    t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

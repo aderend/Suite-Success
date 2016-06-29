@@ -3,7 +3,7 @@ class CreateHitChallenges < ActiveRecord::Migration
     create_table :hit_challenges do |t|
       t.integer :game_id, null: false
       t.integer :suite_id, null: false
-      t.integer :inning
+      t.string :title
       t.boolean :over, default: false
 
       t.timestamps null: false
