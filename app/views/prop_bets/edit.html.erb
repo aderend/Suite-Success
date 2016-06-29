@@ -6,6 +6,13 @@
   <%=q.choice1%></br>
   <%=q.choice2%>
 <%end%>
+
+<%=form_for @prop_bet, url: update_prop_bet_path do |f| %>
+  <%=f.label "Title:" %>
+  <%=f.text_field :title %>
+  <%=f.submit "Update Prop Bet!"%>
+<%end%>
+
 <p>
 <%= link_to "Done!", games_show_path(@game) %>
 </p>
