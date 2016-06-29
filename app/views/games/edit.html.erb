@@ -9,3 +9,7 @@ Edit The Game:
   <%= f.text_field :away %><br />
   <%= f.submit %>
 <% end %>
+
+<%=form_for @game, url: delete_game_path, method: :delete do |f| %>
+  <%=f.submit "Delete Game!" %>
+<%end%>

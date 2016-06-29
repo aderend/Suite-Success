@@ -16,7 +16,7 @@ class GamesController < ApplicationController
 
   def edit
     redirect_to games_show_path(game) unless is_admin
-    game = Game.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
   def update
@@ -49,6 +49,12 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+  end
+
+  def destroy
+    game = Game.find(params[:id])
+    game.destroy
+    redirect_to games_index_path
   end
 
   private
