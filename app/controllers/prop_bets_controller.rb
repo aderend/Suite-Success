@@ -7,7 +7,7 @@ class PropBetsController < ApplicationController
   def create
     game = Game.find(params[:game_id])
     suite_id = Suite.find_by(suite_number: params[:prop_bet][:suite_id], game_id: game.id).id
-    prop_bet = PropBet.new(game_id: game.id, suite_id: suite_id)
+    prop_bet = PropBet.new(game_id: game.id, suite_id: suite_id, title: params[:prop_bet][:title])
     if prop_bet.save
       redirect_to new_question_path(prop_bet)
     else
@@ -50,9 +50,17 @@ class PropBetsController < ApplicationController
   end
 
   def edit
+    @prop_bet = PropBet.find(params[:id])
+    @questions = @prop_bet.questions
+    @game = @prop_bet.game
+  end
+
+  def update
     prop_bet = PropBet.find(params[:id])
-    @questions = prop_bet.questions
-    @game = prop_bet.game
+    game = prop_bet.suite.game
+    prop_bet.title = params[:prop_bet][:title]
+    prop_bet.save
+    redirect_to games_show_path(game)
   end
 
   def destroy
