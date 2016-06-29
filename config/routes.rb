@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get '/games/:id/show' => 'games#show', as: 'games_show'
   get '/games/index' => 'games#index'
   patch '/games/:id/total_hits' => 'games#update_total_hits', as: 'update_game_hits'
+  delete '/games/:id/' => 'games#destroy', as: 'delete_game'
 
   get '/games/:id/add_home_players' => 'home_players#new', as: 'add_home_player'
   post '/games/:id/add_home_players' => 'home_players#create'
