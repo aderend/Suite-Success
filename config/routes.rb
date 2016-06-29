@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get '/games/:id/add_away_players' => 'away_players#new', as: 'add_away_player'
   post '/games/:id/add_away_players' => 'away_players#create'
   patch '/away_players/:id/increment' => 'away_players#increment_bat', as: 'increment_away_bat'
-  patch '/away_players/:id/deccrement' => 'away_players#decrement_bat', as: 'decrement_away_bat'
+  patch '/away_players/:id/decrement' => 'away_players#decrement_bat', as: 'decrement_away_bat'
   delete '/away_players/:id/' => 'away_players#destroy', as: 'delete_away_player'
 
   get '/hit_challenges/:id/play' => 'hit_challenges#play', as: 'play_hit_challenge'
@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   get 'prop_bets/:id/questions/new' => 'questions#new', as: 'new_question'
   post 'prop_bets/:id/questions/new' => 'questions#create', as: 'create_question'
   get '/prop_bets/:id/edit' => 'prop_bets#edit', as: "edit_prop"
+  patch '/prop_bets/:id/edit' => 'prop_bets#update', as: "update_prop_bet"
   get '/questions/:id/edit'=> 'questions#edit', as: 'edit_question'
   patch 'questions/:id/edit' => 'questions#update', as: 'update_prop_question'
   get '/prop_bets/:id/play' => 'prop_bets#play', as: 'show_prop_bet'
@@ -50,6 +51,7 @@ Rails.application.routes.draw do
   delete '/prop_bets/:id' => 'prop_bets#destroy', as: 'delete_prop_bet'
 
   post '/suites/new' => 'suites#create', as: 'create_suite'
+  get '/suites/:id/status' => 'suites#status', as: 'suite_status'
 
 
 
