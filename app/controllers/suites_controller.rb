@@ -10,6 +10,12 @@ class SuitesController < ApplicationController
     end
   end
 
+  def status
+    @suite = Suite.find(params[:id])
+    @hit_challenges = @suite.where(suite_id: @suite.id)
+    @prop_bets = @suite.where(suite_id: @suite.id)
+  end
+
   private
 
   def suite_params
