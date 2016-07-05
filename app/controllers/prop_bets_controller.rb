@@ -45,7 +45,6 @@ class PropBetsController < ApplicationController
   def status
     @prop_bet = PropBet.find(params[:id])
     @questions = @prop_bet.questions
-    @users = @prop_bet.users
     @scores = @prop_bet.display_scores
   end
 
