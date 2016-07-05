@@ -2,30 +2,43 @@
 
 <%if is_admin%>
   <p>
-  <%=form_for :suite, url: create_suite_path(:game_id => @game.id) do |f| %>
-    <%= f.label 'Suite Number:' %>
-    <%= f.text_field :suite_number %>
-    <%=f.submit "Create Suite" %>
-  <%end%>
-</p>
-<p>
-  <%=form_for :prop_bet, url: create_prop_bet_path(:game_id => @game.id) do |f| %>
-    <%= f.label 'Create Prop Bet:' %>
-    <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-    <%= f.label "Title:" %>
-    <%= f.text_field :title %>
-    <%=f.submit "Submit" %>
-  <%end%>
-</p>
-<p>
-  <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
-    <%= f.label 'Create Hit Challenge:' %>
-    <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-    <%= f.label "Title:" %>
-    <%= f.text_field :title %>
-    <%=f.submit "Create" %>
-  <%end%>
-</p>
+    <%=form_for :suite, url: create_suite_path(:game_id => @game.id) do |f| %>
+      <%= f.label 'Suite Number:' %>
+      <%= f.text_field :suite_number %>
+      <%=f.submit "Create" %>
+    <%end%>
+  </p>
+  <p>
+    <%=form_for :pitch_speed , url: create_pitch_speed_path(:game_id => @game.id) do |f|%>
+      <%=f.label 'Create Pitch Speed Challenge' %>
+      <%=f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+      <%=f.label "Title:" %>
+      <%=f.text_field :title %>
+       <%=f.label "Min Speed:" %>
+      <%=f.text_field :min_speed %>
+       <%=f.label "Max Speed:" %>
+      <%=f.text_field :max_speed %>
+      <%=f.submit 'Create' %>
+    <%end%>
+  </p>
+  <p>
+    <%=form_for :prop_bet, url: create_prop_bet_path(:game_id => @game.id) do |f| %>
+      <%= f.label 'Create Prop Bet:' %>
+      <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+      <%= f.label "Title:" %>
+      <%= f.text_field :title %>
+      <%=f.submit "Create" %>
+    <%end%>
+  </p>
+  <p>
+    <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
+      <%= f.label 'Create Hit Challenge:' %>
+      <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+      <%= f.label "Title:" %>
+      <%= f.text_field :title %>
+      <%=f.submit "Create" %>
+    <%end%>
+  </p>
   <%= link_to "Edit Game", games_edit_path(@game) %>
   <%if @game.has_hit_challenge %>
 
@@ -82,6 +95,19 @@
         <%= f.submit "Delete" %>
       <%end%>
       </li>
+    <%end%>
+  <%end%>
+
+  <%if @game.has_pitch_speed %>
+    <h4> Pitch Speed Challenges </h4>
+    <%if @game.pitch_speeds.count > 1 %>
+      <%@pitch_speeds.each do |pitch| %>
+      <%= "Suite #{pitch.suite.suite_number}, #{pitch.title}:" %>
+        <%=link_to "Play", play_pitch_speed_path(pitch) %>
+      <%end%>
+    <%else%>
+      <%= "Suite #{@game.pitch_speeds.first.suite.suite_number}, #{@game.pitch_speeds.first.title}:" %>
+      <%=link_to "Play", play_pitch_speed_path(@game.pitch_speeds.first) %>
     <%end%>
   <%end%>
   <p>
