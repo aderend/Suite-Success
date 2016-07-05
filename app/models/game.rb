@@ -4,6 +4,7 @@ class Game < ActiveRecord::Base
   has_many :away_players
   has_many :home_players
   has_many :suites
+  has_many :pitch_speeds
 
   accepts_nested_attributes_for :suites
 
@@ -26,6 +27,10 @@ class Game < ActiveRecord::Base
 
   def has_prop_bet
     (self.prop_bets.count > 0) ? true : false
+  end
+
+  def has_pitch_speed
+    (self.pitch_speeds.count > 0) ? true : false
   end
 
 end

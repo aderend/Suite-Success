@@ -1,0 +1,7 @@
+<h3>Guess the Pitch Speed (<%="#{@game_title}"%>) </h3>
+
+<p>
+  <%@guesses.each do |guess| %>
+    <%= "#{guess.user.name}: #{guess.guess}"%>
+  <%end%>
+</p>

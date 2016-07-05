@@ -40,6 +40,8 @@ question1 = Question.create(body: "Red or Blue", choice1: "Red", choice2: "Blue"
 question2 = Question.create(body: "Day or Night", choice1: "Day", choice2: "Night", prop_bet_id: 1, correct_choice: "Day")
 question3 = Question.create(body: "Good or Evil", choice1: "Good", choice2: "Evil", prop_bet_id: 1, correct_choice: "Good")
 
+pitch_speed = PitchSpeed.create(game_id: 1, suite_id: 1, min_speed: "100", max_speed: "120", title: "6th Inning")
+
 
 
 

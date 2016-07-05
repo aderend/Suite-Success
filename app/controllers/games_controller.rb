@@ -43,6 +43,7 @@ class GamesController < ApplicationController
     @hit_challenges = @game.hit_challenges
     @prop_bets = @game.prop_bets
     @suites = @game.suites
+    @pitch_speeds = @game.pitch_speeds
     @home_players = @game.home_players.order(position: :asc)
     @away_players = @game.away_players.order(position: :asc)
   end

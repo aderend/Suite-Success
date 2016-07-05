@@ -1,0 +1,11 @@
+<h3> Guess the Top Pitch Speed! </h3>
+
+<%=form_for :pitch_guess, url: submit_pitch_guess_path do |f| %>
+  <%@speed_array.count.times do |index| %>
+    <li>
+      <%=f.radio_button "guess", @speed_array[index] %>
+      <%=f.label "#{@speed_array[index]}" %>
+    </li>
+  <%end%>
+  <%=f.submit "Submit Guess" %>
+<%end%>
