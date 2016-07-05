@@ -54,6 +54,11 @@ Rails.application.routes.draw do
   post '/suites/new' => 'suites#create', as: 'create_suite'
   get '/suites/:id/status' => 'suites#status', as: 'suite_status'
 
+  post '/pitch_speed/new' => 'pitch_speeds#create', as: 'create_pitch_speed'
+  get '/pitch_speed/:id/play' => 'pitch_speeds#play', as: 'play_pitch_speed'
+  post '/pitch_speed/:id/play' => 'pitch_guesses#create', as: 'submit_pitch_guess'
+  get '/pitch_speed/:id/status' => 'pitch_speeds#status', as: 'pitch_speed_status'
+
 
 
 
