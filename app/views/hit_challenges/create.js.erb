@@ -1,0 +1,23 @@
+$(document).ready(function(){
+  $('.create-challenges').on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      url: $(this).attr('action'),
+      method: $(this).attr('method'),
+      data: $(this).serialize()
+    }).done(function(response){
+      data = '<%= j(render partial: "games/hit_challenges_list")%>';
+      console.log(data);
+      $(".hit-list li").append(data);
+
+    }).fail(function(){
+      console.log('you fail in life')
+    })
+  })
+
+
+
+
+
+
+})

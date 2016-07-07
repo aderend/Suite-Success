@@ -1,72 +1,52 @@
 <h2><%=@game.home%> vs <%=@game.away%></h2>
 
 <%if is_admin%>
-  <p>
-    <%=form_for :suite, url: create_suite_path(:game_id => @game.id) do |f| %>
-      <%= f.label 'Suite Number:' %>
-      <%= f.text_field :suite_number %>
-      <%=f.submit "Create" %>
-    <%end%>
-  </p>
-  <p>
-    <%=form_for :pitch_speed , url: create_pitch_speed_path(:game_id => @game.id) do |f|%>
-      <%=f.label 'Create Pitch Speed Challenge' %>
-      <%=f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-      <%=f.label "Title:" %>
-      <%=f.text_field :title %>
-       <%=f.label "Min Speed:" %>
-      <%=f.text_field :min_speed %>
-       <%=f.label "Max Speed:" %>
-      <%=f.text_field :max_speed %>
-      <%=f.submit 'Create' %>
-    <%end%>
-  </p>
-  <p>
-    <%=form_for :prop_bet, url: create_prop_bet_path(:game_id => @game.id) do |f| %>
-      <%= f.label 'Create Prop Bet:' %>
-      <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-      <%= f.label "Title:" %>
-      <%= f.text_field :title %>
-      <%=f.submit "Create" %>
-    <%end%>
-  </p>
-  <p>
-    <%=form_for :hit_challenge, url: create_hit_challenge_path do |f| %>
-      <%= f.label 'Create Hit Challenge:' %>
-      <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-      <%= f.label "Title:" %>
-      <%= f.text_field :title %>
-      <%=f.submit "Create" %>
-    <%end%>
-  </p>
+  <div class='create-challenges'>
+    <p>
+      <%=form_for :suite, url: create_suite_path(:game_id => @game.id) do |f| %>
+        <%= f.label 'Suite Number:' %>
+        <%= f.text_field :suite_number %>
+        <%=f.submit "Create" %>
+      <%end%>
+    </p>
+    <p>
+      <%=form_for :pitch_speed , url: create_pitch_speed_path(:game_id => @game.id) do |f|%>
+        <%=f.label 'Create Pitch Speed Challenge' %>
+        <%=f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+        <%=f.label "Title:" %>
+        <%=f.text_field :title %>
+        <%=f.label "Min Speed:" %>
+        <%=f.text_field :min_speed %>
+        <%=f.label "Max Speed:" %>
+        <%=f.text_field :max_speed %>
+        <%=f.submit 'Create' %>
+      <%end%>
+    </p>
+    <p>
+      <%=form_for :prop_bet, url: create_prop_bet_path(:game_id => @game.id) do |f| %>
+        <%= f.label 'Create Prop Bet:' %>
+        <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+        <%= f.label "Title:" %>
+        <%= f.text_field :title %>
+        <%=f.submit "Create" %>
+      <%end%>
+    </p>
+    <p>
+      <%=form_for :hit_challenge, url: create_hit_challenge_path, :remote => true do |f| %>
+        <%= f.label 'Create Hit Challenge:' %>
+        <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+        <%= f.label "Title:" %>
+        <%= f.text_field :title %>
+        <%=f.submit "Create" %>
+      <%end%>
+    </p>
+  </div>
   <%= link_to "Edit Game", games_edit_path(@game) %>
-  <%if @game.has_hit_challenge %>
-
-    <h4>Hit Challenges: </h4>
-
-    <%if @hit_challenges.count > 1%>
-      <% @hit_challenges.each do |h|%>
-        <li>
-        <%= "Suite #{h.suite.suite_number}, #{h.title}:" %>
-        <%= link_to "Status", hit_status_path(h) %>
-        <%= link_to "Play", play_hit_challenge_path(h) %>
-        <%= form_for h, url: delete_hit_challenge_path(h), method: :delete do |f| %>
-        <%= f.hidden_field :hit_challenge_id, value: h.id %>
-        <%= f.submit "Delete" %>
-      <%end%>
-        </li>
-      <%end%>
-    <%else%>
-      <%= "Suite #{@hit_challenges.first.suite.suite_number}, #{@hit_challenges.first.title}:" %>
-      <%= link_to "Status", hit_status_path(@hit_challenges.first) %>
-      <%= link_to "Play", play_hit_challenge_path(@hit_challenges.first) %>
-      <%= form_for @hit_challenges.first, url: delete_hit_challenge_path(@hit_challenges.first), method: :delete do |f| %>
-        <%= f.hidden_field :hit_challenge_id, value: @hit_challenges.first.id %>
-        <%= f.submit "Delete" %>
-      <%end%>
-    <%end%>
-  <%end%>
-
+<div class='challenge-lists'>
+  <div class='hit-list'>
+    <%=render 'hit_challenges_list', locals: {@hit_challenges => @hit_challenges, @game => @game} %>
+  </div>
+  <div class='prop-list'>
   <%if @game.has_prop_bet%>
 
     <h4> Prop Bets:</h4>
@@ -97,71 +77,89 @@
       </li>
     <%end%>
   <%end%>
-
-  <%if @game.has_pitch_speed %>
-    <h4> Pitch Speed Challenges </h4>
-    <%if @game.pitch_speeds.count > 1 %>
-      <%@pitch_speeds.each do |pitch| %>
-      <%= "Suite #{pitch.suite.suite_number}, #{pitch.title}:" %>
-        <%=link_to "Play", play_pitch_speed_path(pitch) %>
+  </div>
+  <div class='pitch-list'>
+    <%if @game.has_pitch_speed %>
+      <h4> Pitch Speed Challenges </h4>
+      <%if @game.pitch_speeds.count > 1 %>
+        <%@pitch_speeds.each do |pitch| %>
+          <%= "Suite #{pitch.suite.suite_number}, #{pitch.title}:" %>
+          <%=link_to "Play", play_pitch_speed_path(pitch) %>
+        <%end%>
+      <%else%>
+        <%= "Suite #{@game.pitch_speeds.first.suite.suite_number}, #{@game.pitch_speeds.first.title}:" %>
+        <%=link_to "Play", play_pitch_speed_path(@game.pitch_speeds.first) %>
       <%end%>
-    <%else%>
-      <%= "Suite #{@game.pitch_speeds.first.suite.suite_number}, #{@game.pitch_speeds.first.title}:" %>
-      <%=link_to "Play", play_pitch_speed_path(@game.pitch_speeds.first) %>
     <%end%>
-  <%end%>
+  </div>
+</div>
   <p>
     <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
     <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
   </p>
+  <p>
+    Total Hits:
+    <%=form_for @game, url: update_game_hits_path do |f| %>
+      <%=f.text_field :total_hits%>
+      <%=f.submit "Update Hits" %>
+    <%end%>
+  </p>
 <%end%>
-<h5> Total Hits:
-  <%=form_for @game, url: update_game_hits_path do |f| %>
-    <%=f.text_field :total_hits%>
-    <%=f.submit "Update Hits" %>
-  <%end%>
+
 <h4>Home Players:</h4>
-<% @home_players.each do |p| %>
-  <%= p.position%> -
-  <%= p.name%>: <%= p.at_bat%>
-  <% if is_admin %>
-    <%= form_for p, url: increment_home_bat_path do |f| %>
-      <%= f.hidden_field :player_id, value: p.id %>
-      <%=f.submit "+" %>
-    <%end%>
-    <%= form_for p, url: decrement_home_bat_path do |f| %>
-      <%= f.hidden_field :player_id, value: p.id %>
-      <%=f.submit "-" %>
-    <%end%>
-    <b>
-      <%= form_for p, url: delete_home_player_path(p), method: :delete do |f| %>
-        <%= f.hidden_field :player_id, value: p.id %>
+  <div class='home-player-list'>
+    <% @home_players.each do |p| %>
+      <%= p.position%> -
+      <%= p.name%>: <%= p.at_bat%>
+      <% if is_admin %>
+        <%= form_for p, url: increment_home_bat_path do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%=f.submit "+" %>
+        <%end%>
 
-        <%= f.submit "Delete Player" %>
-      <%end%>
+        <%= form_for p, url: decrement_home_bat_path do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%=f.submit "-" %>
+        <%end%>
+    </b>
+        <%= form_for p, url: delete_home_player_path(p), method: :delete do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%= f.submit "Delete Player" %>
+        <%end%>
      </b>
-  <%end%>
-    </br>
-<%end%>
-<h4>Away Players:</h4>
-<% @away_players.each do |p| %>
-  <%= p.position%>
-  <%= p.name%>: <%= p.at_bat%>
-  <% if is_admin %>
-    <%= form_for p, url: increment_away_bat_path do |f| %>
-      <%= f.hidden_field :player_id, value: p.id %>
-      <%=f.submit "+" %>
-    <%end%>
-    <%= form_for p, url: decrement_away_bat_path do |f| %>
-      <%= f.hidden_field :player_id, value: p.id %>
-      <%=f.submit "-" %>
-    <%end%>
-    <%= form_for p, url: delete_away_player_path(p), method: :delete do |f| %>
-        <%= f.hidden_field :player_id, value: p.id %>
-
-        <%= f.submit "Delete Player" %>
       <%end%>
-  <%end%>
+    </br>
+    <%end%>
+  </div>
+
+<h4>Away Players:</h4>
+
+  <div class='away-player-list'>
+
+    <% @away_players.each do |p| %>
+      <%= p.position%>
+      <%= p.name%>: <%= p.at_bat%>
+
+      <% if is_admin %>
+
+        <%= form_for p, url: increment_away_bat_path do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%=f.submit "+" %>
+        <%end%>
+
+        <%= form_for p, url: decrement_away_bat_path do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%=f.submit "-" %>
+        <%end%>
+
+        <%= form_for p, url: delete_away_player_path(p), method: :delete do |f| %>
+          <%= f.hidden_field :player_id, value: p.id %>
+          <%= f.submit "Delete Player" %>
+        <%end%>
+
+      <%end%>
   </br>
-<%end%>
+    <%end%>
+
+  </div>
 
