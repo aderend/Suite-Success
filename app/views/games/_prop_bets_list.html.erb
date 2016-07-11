@@ -1,0 +1,35 @@
+<%if @game.has_prop_bet%>
+
+  <h4> Prop Bets:</h4>
+
+    <%if @prop_bets.count > 1 %>
+      <% @prop_bets.each do |prop| %>
+        <li>
+          <%= "Suite #{prop.suite.suite_number}, #{prop.title}:" %>
+          <%=link_to "Status", prop_status_path(prop) %>
+          <%=link_to "Play", show_prop_bet_path(prop) %>
+          <%=link_to "Edit", edit_prop_path(prop) %>
+          <%= form_for prop, url: delete_prop_bet_path(prop), method: :delete do |f| %>
+            <%= f.hidden_field :prop_id, value: prop.id %>
+            <%= f.submit "Delete" %>
+          <%end%>
+        </li>
+
+      <%end%>
+
+    <%else%>
+      <li>
+      <%="Suite #{@prop_bets.first.suite.suite_number}, #{@prop_bets.first.title}:" %>
+      <%= link_to "Status", prop_status_path(@prop_bets.first) %>
+      <%= link_to "Play", show_prop_bet_path(@prop_bets.first) %>
+      <%=link_to "Edit", edit_prop_path(@prop_bets.first) %>
+      <%= form_for @prop_bets.first, url: delete_prop_bet_path(@prop_bets.first), method: :delete do |f| %>
+        <%= f.hidden_field :prop_id, value: @prop_bets.first.id %>
+        <%= f.submit "Delete" %>
+
+      <%end%>
+      </li>
+
+    <%end%>
+
+<%end%>
