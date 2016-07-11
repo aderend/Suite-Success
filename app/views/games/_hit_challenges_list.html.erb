@@ -1,27 +1,25 @@
-  <%if @game.has_hit_challenge %>
-    <h4>Hit Challenges: </h4>
+  <h4> Hit Challenges</h4>
 
     <%if @hit_challenges.count > 1%>
       <% @hit_challenges.each do |h|%>
         <li>
-        <%= "Suite #{h.suite.suite_number}, #{h.title}:" %>
-        <%= link_to "Status", hit_status_path(h) %>
-        <%= link_to "Play", play_hit_challenge_path(h) %>
-        <%= form_for h, url: delete_hit_challenge_path(h), method: :delete do |f| %>
-          <%= f.hidden_field :hit_challenge_id, value: h.id %>
-          <%= f.submit "Delete" %>
-        <%end%>
+          <%= "Suite #{h.suite.suite_number}, #{h.title}:" %>
+          <%= link_to "Status", hit_status_path(h) %>
+          <%= link_to "Play", play_hit_challenge_path(h) %>
+          <%= form_for h, url: delete_hit_challenge_path(h), method: :delete do |f| %>
+            <%= f.hidden_field :hit_challenge_id, value: h.id %>
+            <%= f.submit "Delete" %>
+          <%end%>
         </li>
       <%end%>
     <%else%>
       <li>
-      <%= "Suite #{@hit_challenges.first.suite.suite_number}, #{@hit_challenges.first.title}:" %>
-      <%= link_to "Status", hit_status_path(@hit_challenges.first) %>
-      <%= link_to "Play", play_hit_challenge_path(@hit_challenges.first) %>
-      <%= form_for @hit_challenges.first, url: delete_hit_challenge_path(@hit_challenges.first), method: :delete do |f| %>
-        <%= f.hidden_field :hit_challenge_id, value: @hit_challenges.first.id %>
-        <%= f.submit "Delete" %>
-      <%end%>
+        <%= "Suite #{@hit_challenges.first.suite.suite_number}, #{@hit_challenges.first.title}:" %>
+        <%= link_to "Status", hit_status_path(@hit_challenges.first) %>
+        <%= link_to "Play", play_hit_challenge_path(@hit_challenges.first) %>
+        <%= form_for @hit_challenges.first, url: delete_hit_challenge_path(@hit_challenges.first), method: :delete do |f| %>
+          <%= f.hidden_field :hit_challenge_id, value: @hit_challenges.first.id %>
+          <%= f.submit "Delete" %>
+        <%end%>
       </li>
     <%end%>
-  <%end%>

@@ -31,72 +31,39 @@
         <%=f.submit "Create" %>
       <%end%>
     </p>
-    <p>
-      <%=form_for :hit_challenge, url: create_hit_challenge_path, :remote => true do |f| %>
-        <%= f.label 'Create Hit Challenge:' %>
-        <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
-        <%= f.label "Title:" %>
-        <%= f.text_field :title %>
-        <%=f.submit "Create" %>
-      <%end%>
-    </p>
+
+      <div id='create-hit'>
+        <%=form_for :hit_challenge, url: create_hit_challenge_path, authenticity_token: true, remote: true do |f| %>
+          <%= f.label 'Create Hit Challenge:' %>
+          <%= f.select :suite_id, options_for_select(@game.suites.map {|s| s.suite_number}), {include_blank: 'Suite number?'} %>
+          <%= f.label "Title:" %>
+          <%= f.text_field :title %>
+          <%=f.submit "Create" %>
+        <%end%>
+      </div>
+
   </div>
   <%= link_to "Edit Game", games_edit_path(@game) %>
-<div class='challenge-lists'>
-  <div class='hit-list'>
-    <%=render 'hit_challenges_list', locals: {@hit_challenges => @hit_challenges, @game => @game} %>
-  </div>
-  <div class='prop-list'>
-  <%if @game.has_prop_bet%>
 
-    <h4> Prop Bets:</h4>
+  <div class='challenge-lists'>
+    <%if @game.has_hit_challenge %>
+    <div id='hit-list'>
+      <%=render 'hit_challenges_list', locals: {@hit_challenges => @hit_challenges} %>
+    </div>
+    <%end%>
+    <div id='prop-list'>
+      <%=render 'prop_bets_list', locals: {@prop_bets => @prop_bets, @game => @game} %>
+    </div>
+    <div id='pitch-list'>
+      <%=render 'pitch_speed_list', locals: {@pitch_speeds => @pitch_speeds, @game => @game} %>
+    </div>
+  </div>
 
-    <%if @prop_bets.count > 1 %>
-      <% @prop_bets.each do |prop| %>
-        <li>
-          <%= "Suite #{prop.suite.suite_number}, #{prop.title}:" %>
-          <%=link_to "Status", prop_status_path(prop) %>
-          <%=link_to "Play", show_prop_bet_path(prop) %>
-          <%=link_to "Edit", edit_prop_path(prop) %>
-          <%= form_for prop, url: delete_prop_bet_path(prop), method: :delete do |f| %>
-            <%= f.hidden_field :prop_id, value: prop.id %>
-            <%= f.submit "Delete" %>
-          <%end%>
-        </li>
-      <%end%>
-    <%else%>
-      <li>
-      <%="Suite #{@prop_bets.first.suite.suite_number}, #{@prop_bets.first.title}:" %>
-      <%= link_to "Status", prop_status_path(@prop_bets.first) %>
-      <%= link_to "Play", show_prop_bet_path(@prop_bets.first) %>
-      <%=link_to "Edit", edit_prop_path(@prop_bets.first) %>
-      <%= form_for @prop_bets.first, url: delete_prop_bet_path(@prop_bets.first), method: :delete do |f| %>
-        <%= f.hidden_field :prop_id, value: @prop_bets.first.id %>
-        <%= f.submit "Delete" %>
-      <%end%>
-      </li>
-    <%end%>
-  <%end%>
-  </div>
-  <div class='pitch-list'>
-    <%if @game.has_pitch_speed %>
-      <h4> Pitch Speed Challenges </h4>
-      <%if @game.pitch_speeds.count > 1 %>
-        <%@pitch_speeds.each do |pitch| %>
-          <%= "Suite #{pitch.suite.suite_number}, #{pitch.title}:" %>
-          <%=link_to "Play", play_pitch_speed_path(pitch) %>
-        <%end%>
-      <%else%>
-        <%= "Suite #{@game.pitch_speeds.first.suite.suite_number}, #{@game.pitch_speeds.first.title}:" %>
-        <%=link_to "Play", play_pitch_speed_path(@game.pitch_speeds.first) %>
-      <%end%>
-    <%end%>
-  </div>
-</div>
   <p>
     <li><%= link_to "Add Home Players", add_home_player_path(@game)%></li>
     <li><%= link_to "Add Away Players", add_away_player_path(@game)%></li>
   </p>
+
   <p>
     Total Hits:
     <%=form_for @game, url: update_game_hits_path do |f| %>
@@ -104,9 +71,11 @@
       <%=f.submit "Update Hits" %>
     <%end%>
   </p>
+
 <%end%>
 
 <h4>Home Players:</h4>
+
   <div class='home-player-list'>
     <% @home_players.each do |p| %>
       <%= p.position%> -

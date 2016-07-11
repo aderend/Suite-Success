@@ -1,0 +1,15 @@
+<%if @game.has_pitch_speed %>
+
+  <h4> Pitch Speed Challenges </h4>
+
+  <%if @game.pitch_speeds.count > 1 %>
+    <%@pitch_speeds.each do |pitch| %>
+      <%= "Suite #{pitch.suite.suite_number}, #{pitch.title}:" %>
+      <%=link_to "Play", play_pitch_speed_path(pitch) %>
+    <%end%>
+  <%else%>
+  <%= "Suite #{@game.pitch_speeds.first.suite.suite_number}, #{@game.pitch_speeds.first.title}:" %>
+    <%=link_to "Play", play_pitch_speed_path(@game.pitch_speeds.first) %>
+  <%end%>
+
+<%end%>
