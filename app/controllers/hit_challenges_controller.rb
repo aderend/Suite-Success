@@ -5,13 +5,10 @@ class HitChallengesController < ApplicationController
     @hit_challenges = @game.hit_challenges
     suite_id = Suite.find_by(suite_number: params[:hit_challenge][:suite_id], game_id: @game.id).id
     @hit_challenge = HitChallenge.new(game_id: @game.id, suite_id: suite_id, title: params[:hit_challenge][:title])
-    if @hit_challenge.save && request.xhr?
-      respond_to do |format|
-        format.json { render json: @hit_challenge}
-        format.js
-      end
+    if @hit_challenge.save
+      redirect_to games_show_path(@game)
     else
-      redirect_to games_show_path(game)
+      redirect_to games_show_path(@game)
     end
   end
 
